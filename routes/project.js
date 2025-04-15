@@ -8,7 +8,7 @@ const { body, validationResult } = require('express-validator');
 const validateProjectInput = [
   body('name').isString().notEmpty().withMessage('Name is required and should be a string'),
   body('description').optional().isString().withMessage('Description should be a string'),
-];
+]
 
 // Create a new project
 router.post('/', validateProjectInput, async (req, res) => {
@@ -40,13 +40,13 @@ router.get('/', async (req, res) => {
         members: true,  // Include related members
         tasks: true,    // Include related tasks
       },
-    });
+    })
     return res.status(200).json(projects);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Something went wrong while fetching projects' });
   }
-});
+})
 
 // Get a project by ID
 router.get('/:id', async (req, res) => {
@@ -109,6 +109,6 @@ router.delete('/:id', async (req, res) => {
     console.error(error);
     return res.status(500).json({ error: 'Something went wrong while deleting the project' });
   }
-});
+})
 
 module.exports = router;
