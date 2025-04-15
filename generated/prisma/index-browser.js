@@ -127,6 +127,52 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.TaskScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  projectId: 'projectId',
+  categoryId: 'categoryId',
+  dueDate: 'dueDate',
+  priority: 'priority',
+  estimatedTime: 'estimatedTime',
+  status: 'status',
+  attachmentPath: 'attachmentPath',
+  recurrence: 'recurrence',
+  dependsOnId: 'dependsOnId',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.ProjectScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ProjectMemberScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  projectId: 'projectId',
+  role: 'role'
+};
+
+exports.Prisma.CommentScalarFieldEnum = {
+  id: 'id',
+  message: 'message',
+  userId: 'userId',
+  taskId: 'taskId',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -137,9 +183,19 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Task: 'Task',
+  Category: 'Category',
+  Project: 'Project',
+  ProjectMember: 'ProjectMember',
+  Comment: 'Comment'
 };
 
 /**

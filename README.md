@@ -1,7 +1,11 @@
 # node_assignment
 Backend Application
 
-Signup 
+Signup:
+
+The encrypted password will be  
+"$2b$10$I23ohJYbE/DgUbYTQmGxA.lFD7jhR452mZzLVmfkCvFEQTamGOV1G"
+
 api : POST "http://localhost:3456/api/auth/signup"
 payload :
 {
