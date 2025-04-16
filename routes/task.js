@@ -85,6 +85,28 @@ router.get('/', async (req, res) => {
     }
 });
 
+// GET /tasks/status-summary
+router.get('/status-summary', async (req, res) => {
+    try {
+        const statusCounts = await prisma.task.groupBy({
+            by: ['status'],
+            _count: {
+                status: true,
+            },
+        });
+
+        const formattedCounts = statusCounts.reduce((acc, curr) => {
+            acc[curr.status] = curr._count.status;
+            return acc;
+        }, {});
+
+        res.status(200).json(formattedCounts);
+    } catch (error) {
+        console.error('Task status summary error:', error);
+        res.status(500).json({ message: 'Failed to get task status summary' });
+    }
+});
+
 router.get('/:id', async (req, res) => {
     try {
         const id = parseInt(req.params.id);
@@ -140,7 +162,7 @@ router.delete('/:id', async (req, res) => {
             where: { id }
         });
 
-        res.status(200).json({message:"Task Deleted"});
+        res.status(200).json({ message: "Task Deleted" });
     } catch (error) {
         console.error('Delete task error:', error);
         res.status(500).json({ message: 'Failed to delete task' });
@@ -207,37 +229,57 @@ router.post('/:id/comments', async (req, res) => {
 router.post('/:id/assign', async (req, res) => {
     const taskId = parseInt(req.params.id);
     const { userId } = req.body;
-  
-    try {
-      // 🔍 Check if user exists
-      const userExists = await prisma.user.findUnique({
-        where: { id: userId }
-      });
-  
-      if (!userExists) {
-        return res.status(404).json({ message: `User with ID ${userId} does not exist.` });
-      }
-  
-      // ✅ Proceed with assignment
-      const updatedTask = await prisma.task.update({
-        where: { id: taskId },
-        data: { userId }
-      });
-  
-      // 📢 Simulate notification
-      const notification = {
-        message: `Task #${taskId} has been assigned to user #${userId}`
-      };
-  
-      res.status(200).json({ task: updatedTask, notification });
-    } catch (error) {
-      console.error('Assign task error:', error);
-      res.status(500).json({ message: 'Failed to assign task' });
-    }
-  });
-  
-// router.post(':id/message',async(req,res)=>{
 
-// })
+    try {
+        // 🔍 Check if user exists
+        const userExists = await prisma.user.findUnique({
+            where: { id: userId }
+        });
+
+        if (!userExists) {
+            return res.status(404).json({ message: `User with ID ${userId} does not exist.` });
+        }
+
+        // ✅ Proceed with assignment
+        const updatedTask = await prisma.task.update({
+            where: { id: taskId },
+            data: { userId }
+        });
+
+        // 📢 Simulate notification
+        const notification = {
+            message: `Task #${taskId} has been assigned to user #${userId}`
+        };
+
+        res.status(200).json({ task: updatedTask, notification });
+    } catch (error) {
+        console.error('Assign task error:', error);
+        res.status(500).json({ message: 'Failed to assign task' });
+    }
+});
+
+// PUT /tasks/:id/status
+router.put('/:id/status', async (req, res) => {
+    try {
+        const id = parseInt(req.params.id);
+        const { status } = req.body;
+
+        if (!status) {
+            return res.status(400).json({ message: 'Status is required' });
+        }
+
+        const updatedTask = await prisma.task.update({
+            where: { id },
+            data: { status },
+        });
+
+        res.status(200).json(updatedTask);
+    } catch (error) {
+        console.error('Update task status error:', error);
+        res.status(500).json({ message: 'Failed to update task status', error: error.message });
+    }
+});
+
+
 
 module.exports = router
