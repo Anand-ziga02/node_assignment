@@ -37,7 +37,8 @@ POST /api/tasks
   "dependsOnId": 3,
   "userId": 1
 }
-GET /api/tasks
+GET /api/tasks ( fetch all tasks)
+GET /api/tasks/:id ( fetch specify task details)
 Query Parameters (optional):
 status, priority, dueDate, categoryId, search, sortBy, order
 PUT /api/tasks/:id
