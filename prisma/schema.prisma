@@ -9,43 +9,43 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  password  String
-  firstName String
-  lastName  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  tasks     Task[]
-  comments  Comment[]
-  projects  ProjectMember[]
+  id               Int             @id @default(autoincrement())
+  email            String          @unique
+  password         String
+  firstName        String
+  lastName         String
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  avatar           String?
+  resetToken       String?         @default("")
+  resetTokenExpiry DateTime?
+  comments         Comment[]
+  projects         ProjectMember[]
+  tasks            Task[]
 }
 
 model Task {
   id             Int       @id @default(autoincrement())
   title          String
   description    String?
-  project        Project?  @relation(fields: [projectId], references: [id])
   projectId      Int?
-  category       Category? @relation(fields: [categoryId], references: [id])
   categoryId     Int?
   dueDate        DateTime?
   priority       String?
   estimatedTime  Int?
   status         String    @default("not_started")
   attachmentPath String?
-  recurrence     String?   // daily, weekly, monthly
-
-  // ✅ Self-relation
-  dependsOnId    Int?
-  dependsOn      Task?     @relation("TaskDependencies", fields: [dependsOnId], references: [id])
-  dependentTasks Task[]    @relation("TaskDependencies") // inverse side
-
-  assignedTo     User?     @relation(fields: [userId], references: [id])
-  userId         Int?
-  comments       Comment[]
+  recurrence     String?
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
+  dependsOnId    Int?
+  userId         Int?
+  comments       Comment[]
+  category       Category? @relation(fields: [categoryId], references: [id])
+  dependsOn      Task?     @relation("TaskDependencies", fields: [dependsOnId], references: [id])
+  dependentTasks Task[]    @relation("TaskDependencies")
+  project        Project?  @relation(fields: [projectId], references: [id])
+  assignedTo     User?     @relation(fields: [userId], references: [id])
 }
 
 model Category {
@@ -55,31 +55,30 @@ model Category {
 }
 
 model Project {
-  id          Int              @id @default(autoincrement())
+  id          Int             @id @default(autoincrement())
   name        String
   description String?
-  tasks       Task[]
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
   members     ProjectMember[]
-  createdAt   DateTime         @default(now())
-  updatedAt   DateTime         @updatedAt
+  tasks       Task[]
 }
 
 model ProjectMember {
   id        Int     @id @default(autoincrement())
-  user      User    @relation(fields: [userId], references: [id])
   userId    Int
-  project   Project @relation(fields: [projectId], references: [id])
   projectId Int
-  role      String  // e.g., "owner", "collaborator"
+  role      String
+  project   Project @relation(fields: [projectId], references: [id])
+  user      User    @relation(fields: [userId], references: [id])
 }
 
 model Comment {
   id        Int      @id @default(autoincrement())
   message   String
-  user      User     @relation(fields: [userId], references: [id])
   userId    Int
-  task      Task     @relation(fields: [taskId], references: [id])
   taskId    Int
   createdAt DateTime @default(now())
+  task      Task     @relation(fields: [taskId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
 }
-

@@ -1324,15 +1324,15 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    tasks: number
     comments: number
     projects: number
+    tasks: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tasks?: boolean | UserCountOutputTypeCountTasksArgs
     comments?: boolean | UserCountOutputTypeCountCommentsArgs
     projects?: boolean | UserCountOutputTypeCountProjectsArgs
+    tasks?: boolean | UserCountOutputTypeCountTasksArgs
   }
 
   // Custom InputTypes
@@ -1349,13 +1349,6 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountTasksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TaskWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
   export type UserCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CommentWhereInput
   }
@@ -1367,19 +1360,26 @@ export namespace Prisma {
     where?: ProjectMemberWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountTasksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TaskWhereInput
+  }
+
 
   /**
    * Count Type TaskCountOutputType
    */
 
   export type TaskCountOutputType = {
-    dependentTasks: number
     comments: number
+    dependentTasks: number
   }
 
   export type TaskCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    dependentTasks?: boolean | TaskCountOutputTypeCountDependentTasksArgs
     comments?: boolean | TaskCountOutputTypeCountCommentsArgs
+    dependentTasks?: boolean | TaskCountOutputTypeCountDependentTasksArgs
   }
 
   // Custom InputTypes
@@ -1396,15 +1396,15 @@ export namespace Prisma {
   /**
    * TaskCountOutputType without action
    */
-  export type TaskCountOutputTypeCountDependentTasksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TaskWhereInput
+  export type TaskCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommentWhereInput
   }
 
   /**
    * TaskCountOutputType without action
    */
-  export type TaskCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CommentWhereInput
+  export type TaskCountOutputTypeCountDependentTasksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TaskWhereInput
   }
 
 
@@ -1444,13 +1444,13 @@ export namespace Prisma {
    */
 
   export type ProjectCountOutputType = {
-    tasks: number
     members: number
+    tasks: number
   }
 
   export type ProjectCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tasks?: boolean | ProjectCountOutputTypeCountTasksArgs
     members?: boolean | ProjectCountOutputTypeCountMembersArgs
+    tasks?: boolean | ProjectCountOutputTypeCountTasksArgs
   }
 
   // Custom InputTypes
@@ -1467,15 +1467,15 @@ export namespace Prisma {
   /**
    * ProjectCountOutputType without action
    */
-  export type ProjectCountOutputTypeCountTasksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TaskWhereInput
+  export type ProjectCountOutputTypeCountMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProjectMemberWhereInput
   }
 
   /**
    * ProjectCountOutputType without action
    */
-  export type ProjectCountOutputTypeCountMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProjectMemberWhereInput
+  export type ProjectCountOutputTypeCountTasksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TaskWhereInput
   }
 
 
@@ -1511,6 +1511,9 @@ export namespace Prisma {
     lastName: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    avatar: string | null
+    resetToken: string | null
+    resetTokenExpiry: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1521,6 +1524,9 @@ export namespace Prisma {
     lastName: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    avatar: string | null
+    resetToken: string | null
+    resetTokenExpiry: Date | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1531,6 +1537,9 @@ export namespace Prisma {
     lastName: number
     createdAt: number
     updatedAt: number
+    avatar: number
+    resetToken: number
+    resetTokenExpiry: number
     _all: number
   }
 
@@ -1551,6 +1560,9 @@ export namespace Prisma {
     lastName?: true
     createdAt?: true
     updatedAt?: true
+    avatar?: true
+    resetToken?: true
+    resetTokenExpiry?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1561,6 +1573,9 @@ export namespace Prisma {
     lastName?: true
     createdAt?: true
     updatedAt?: true
+    avatar?: true
+    resetToken?: true
+    resetTokenExpiry?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1571,6 +1586,9 @@ export namespace Prisma {
     lastName?: true
     createdAt?: true
     updatedAt?: true
+    avatar?: true
+    resetToken?: true
+    resetTokenExpiry?: true
     _all?: true
   }
 
@@ -1668,6 +1686,9 @@ export namespace Prisma {
     lastName: string
     createdAt: Date
     updatedAt: Date
+    avatar: string | null
+    resetToken: string | null
+    resetTokenExpiry: Date | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1697,9 +1718,12 @@ export namespace Prisma {
     lastName?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    tasks?: boolean | User$tasksArgs<ExtArgs>
+    avatar?: boolean
+    resetToken?: boolean
+    resetTokenExpiry?: boolean
     comments?: boolean | User$commentsArgs<ExtArgs>
     projects?: boolean | User$projectsArgs<ExtArgs>
+    tasks?: boolean | User$tasksArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1711,6 +1735,9 @@ export namespace Prisma {
     lastName?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    avatar?: boolean
+    resetToken?: boolean
+    resetTokenExpiry?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1721,6 +1748,9 @@ export namespace Prisma {
     lastName?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    avatar?: boolean
+    resetToken?: boolean
+    resetTokenExpiry?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1731,13 +1761,16 @@ export namespace Prisma {
     lastName?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    avatar?: boolean
+    resetToken?: boolean
+    resetTokenExpiry?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "firstName" | "lastName" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "firstName" | "lastName" | "createdAt" | "updatedAt" | "avatar" | "resetToken" | "resetTokenExpiry", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tasks?: boolean | User$tasksArgs<ExtArgs>
     comments?: boolean | User$commentsArgs<ExtArgs>
     projects?: boolean | User$projectsArgs<ExtArgs>
+    tasks?: boolean | User$tasksArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1746,9 +1779,9 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      tasks: Prisma.$TaskPayload<ExtArgs>[]
       comments: Prisma.$CommentPayload<ExtArgs>[]
       projects: Prisma.$ProjectMemberPayload<ExtArgs>[]
+      tasks: Prisma.$TaskPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1758,6 +1791,9 @@ export namespace Prisma {
       lastName: string
       createdAt: Date
       updatedAt: Date
+      avatar: string | null
+      resetToken: string | null
+      resetTokenExpiry: Date | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2152,9 +2188,9 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    tasks<T extends User$tasksArgs<ExtArgs> = {}>(args?: Subset<T, User$tasksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     comments<T extends User$commentsArgs<ExtArgs> = {}>(args?: Subset<T, User$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     projects<T extends User$projectsArgs<ExtArgs> = {}>(args?: Subset<T, User$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tasks<T extends User$tasksArgs<ExtArgs> = {}>(args?: Subset<T, User$tasksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2191,6 +2227,9 @@ export namespace Prisma {
     readonly lastName: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
+    readonly avatar: FieldRef<"User", 'String'>
+    readonly resetToken: FieldRef<"User", 'String'>
+    readonly resetTokenExpiry: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -2579,30 +2618,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.tasks
-   */
-  export type User$tasksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Task
-     */
-    select?: TaskSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Task
-     */
-    omit?: TaskOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TaskInclude<ExtArgs> | null
-    where?: TaskWhereInput
-    orderBy?: TaskOrderByWithRelationInput | TaskOrderByWithRelationInput[]
-    cursor?: TaskWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TaskScalarFieldEnum | TaskScalarFieldEnum[]
-  }
-
-  /**
    * User.comments
    */
   export type User$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2648,6 +2663,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ProjectMemberScalarFieldEnum | ProjectMemberScalarFieldEnum[]
+  }
+
+  /**
+   * User.tasks
+   */
+  export type User$tasksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Task
+     */
+    select?: TaskSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Task
+     */
+    omit?: TaskOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TaskInclude<ExtArgs> | null
+    where?: TaskWhereInput
+    orderBy?: TaskOrderByWithRelationInput | TaskOrderByWithRelationInput[]
+    cursor?: TaskWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TaskScalarFieldEnum | TaskScalarFieldEnum[]
   }
 
   /**
@@ -2711,10 +2750,10 @@ export namespace Prisma {
     status: string | null
     attachmentPath: string | null
     recurrence: string | null
-    dependsOnId: number | null
-    userId: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    dependsOnId: number | null
+    userId: number | null
   }
 
   export type TaskMaxAggregateOutputType = {
@@ -2729,10 +2768,10 @@ export namespace Prisma {
     status: string | null
     attachmentPath: string | null
     recurrence: string | null
-    dependsOnId: number | null
-    userId: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    dependsOnId: number | null
+    userId: number | null
   }
 
   export type TaskCountAggregateOutputType = {
@@ -2747,10 +2786,10 @@ export namespace Prisma {
     status: number
     attachmentPath: number
     recurrence: number
-    dependsOnId: number
-    userId: number
     createdAt: number
     updatedAt: number
+    dependsOnId: number
+    userId: number
     _all: number
   }
 
@@ -2785,10 +2824,10 @@ export namespace Prisma {
     status?: true
     attachmentPath?: true
     recurrence?: true
-    dependsOnId?: true
-    userId?: true
     createdAt?: true
     updatedAt?: true
+    dependsOnId?: true
+    userId?: true
   }
 
   export type TaskMaxAggregateInputType = {
@@ -2803,10 +2842,10 @@ export namespace Prisma {
     status?: true
     attachmentPath?: true
     recurrence?: true
-    dependsOnId?: true
-    userId?: true
     createdAt?: true
     updatedAt?: true
+    dependsOnId?: true
+    userId?: true
   }
 
   export type TaskCountAggregateInputType = {
@@ -2821,10 +2860,10 @@ export namespace Prisma {
     status?: true
     attachmentPath?: true
     recurrence?: true
-    dependsOnId?: true
-    userId?: true
     createdAt?: true
     updatedAt?: true
+    dependsOnId?: true
+    userId?: true
     _all?: true
   }
 
@@ -2926,10 +2965,10 @@ export namespace Prisma {
     status: string
     attachmentPath: string | null
     recurrence: string | null
-    dependsOnId: number | null
-    userId: number | null
     createdAt: Date
     updatedAt: Date
+    dependsOnId: number | null
+    userId: number | null
     _count: TaskCountAggregateOutputType | null
     _avg: TaskAvgAggregateOutputType | null
     _sum: TaskSumAggregateOutputType | null
@@ -2963,16 +3002,16 @@ export namespace Prisma {
     status?: boolean
     attachmentPath?: boolean
     recurrence?: boolean
-    dependsOnId?: boolean
-    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    project?: boolean | Task$projectArgs<ExtArgs>
+    dependsOnId?: boolean
+    userId?: boolean
+    comments?: boolean | Task$commentsArgs<ExtArgs>
     category?: boolean | Task$categoryArgs<ExtArgs>
     dependsOn?: boolean | Task$dependsOnArgs<ExtArgs>
     dependentTasks?: boolean | Task$dependentTasksArgs<ExtArgs>
+    project?: boolean | Task$projectArgs<ExtArgs>
     assignedTo?: boolean | Task$assignedToArgs<ExtArgs>
-    comments?: boolean | Task$commentsArgs<ExtArgs>
     _count?: boolean | TaskCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["task"]>
 
@@ -2988,13 +3027,13 @@ export namespace Prisma {
     status?: boolean
     attachmentPath?: boolean
     recurrence?: boolean
-    dependsOnId?: boolean
-    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    project?: boolean | Task$projectArgs<ExtArgs>
+    dependsOnId?: boolean
+    userId?: boolean
     category?: boolean | Task$categoryArgs<ExtArgs>
     dependsOn?: boolean | Task$dependsOnArgs<ExtArgs>
+    project?: boolean | Task$projectArgs<ExtArgs>
     assignedTo?: boolean | Task$assignedToArgs<ExtArgs>
   }, ExtArgs["result"]["task"]>
 
@@ -3010,13 +3049,13 @@ export namespace Prisma {
     status?: boolean
     attachmentPath?: boolean
     recurrence?: boolean
-    dependsOnId?: boolean
-    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    project?: boolean | Task$projectArgs<ExtArgs>
+    dependsOnId?: boolean
+    userId?: boolean
     category?: boolean | Task$categoryArgs<ExtArgs>
     dependsOn?: boolean | Task$dependsOnArgs<ExtArgs>
+    project?: boolean | Task$projectArgs<ExtArgs>
     assignedTo?: boolean | Task$assignedToArgs<ExtArgs>
   }, ExtArgs["result"]["task"]>
 
@@ -3032,44 +3071,44 @@ export namespace Prisma {
     status?: boolean
     attachmentPath?: boolean
     recurrence?: boolean
-    dependsOnId?: boolean
-    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    dependsOnId?: boolean
+    userId?: boolean
   }
 
-  export type TaskOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "projectId" | "categoryId" | "dueDate" | "priority" | "estimatedTime" | "status" | "attachmentPath" | "recurrence" | "dependsOnId" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["task"]>
+  export type TaskOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "projectId" | "categoryId" | "dueDate" | "priority" | "estimatedTime" | "status" | "attachmentPath" | "recurrence" | "createdAt" | "updatedAt" | "dependsOnId" | "userId", ExtArgs["result"]["task"]>
   export type TaskInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    project?: boolean | Task$projectArgs<ExtArgs>
+    comments?: boolean | Task$commentsArgs<ExtArgs>
     category?: boolean | Task$categoryArgs<ExtArgs>
     dependsOn?: boolean | Task$dependsOnArgs<ExtArgs>
     dependentTasks?: boolean | Task$dependentTasksArgs<ExtArgs>
+    project?: boolean | Task$projectArgs<ExtArgs>
     assignedTo?: boolean | Task$assignedToArgs<ExtArgs>
-    comments?: boolean | Task$commentsArgs<ExtArgs>
     _count?: boolean | TaskCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TaskIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    project?: boolean | Task$projectArgs<ExtArgs>
     category?: boolean | Task$categoryArgs<ExtArgs>
     dependsOn?: boolean | Task$dependsOnArgs<ExtArgs>
+    project?: boolean | Task$projectArgs<ExtArgs>
     assignedTo?: boolean | Task$assignedToArgs<ExtArgs>
   }
   export type TaskIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    project?: boolean | Task$projectArgs<ExtArgs>
     category?: boolean | Task$categoryArgs<ExtArgs>
     dependsOn?: boolean | Task$dependsOnArgs<ExtArgs>
+    project?: boolean | Task$projectArgs<ExtArgs>
     assignedTo?: boolean | Task$assignedToArgs<ExtArgs>
   }
 
   export type $TaskPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Task"
     objects: {
-      project: Prisma.$ProjectPayload<ExtArgs> | null
+      comments: Prisma.$CommentPayload<ExtArgs>[]
       category: Prisma.$CategoryPayload<ExtArgs> | null
       dependsOn: Prisma.$TaskPayload<ExtArgs> | null
       dependentTasks: Prisma.$TaskPayload<ExtArgs>[]
+      project: Prisma.$ProjectPayload<ExtArgs> | null
       assignedTo: Prisma.$UserPayload<ExtArgs> | null
-      comments: Prisma.$CommentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3083,10 +3122,10 @@ export namespace Prisma {
       status: string
       attachmentPath: string | null
       recurrence: string | null
-      dependsOnId: number | null
-      userId: number | null
       createdAt: Date
       updatedAt: Date
+      dependsOnId: number | null
+      userId: number | null
     }, ExtArgs["result"]["task"]>
     composites: {}
   }
@@ -3481,12 +3520,12 @@ export namespace Prisma {
    */
   export interface Prisma__TaskClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    project<T extends Task$projectArgs<ExtArgs> = {}>(args?: Subset<T, Task$projectArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    comments<T extends Task$commentsArgs<ExtArgs> = {}>(args?: Subset<T, Task$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     category<T extends Task$categoryArgs<ExtArgs> = {}>(args?: Subset<T, Task$categoryArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     dependsOn<T extends Task$dependsOnArgs<ExtArgs> = {}>(args?: Subset<T, Task$dependsOnArgs<ExtArgs>>): Prisma__TaskClient<$Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     dependentTasks<T extends Task$dependentTasksArgs<ExtArgs> = {}>(args?: Subset<T, Task$dependentTasksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    project<T extends Task$projectArgs<ExtArgs> = {}>(args?: Subset<T, Task$projectArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     assignedTo<T extends Task$assignedToArgs<ExtArgs> = {}>(args?: Subset<T, Task$assignedToArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    comments<T extends Task$commentsArgs<ExtArgs> = {}>(args?: Subset<T, Task$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3527,10 +3566,10 @@ export namespace Prisma {
     readonly status: FieldRef<"Task", 'String'>
     readonly attachmentPath: FieldRef<"Task", 'String'>
     readonly recurrence: FieldRef<"Task", 'String'>
-    readonly dependsOnId: FieldRef<"Task", 'Int'>
-    readonly userId: FieldRef<"Task", 'Int'>
     readonly createdAt: FieldRef<"Task", 'DateTime'>
     readonly updatedAt: FieldRef<"Task", 'DateTime'>
+    readonly dependsOnId: FieldRef<"Task", 'Int'>
+    readonly userId: FieldRef<"Task", 'Int'>
   }
     
 
@@ -3927,22 +3966,27 @@ export namespace Prisma {
   }
 
   /**
-   * Task.project
+   * Task.comments
    */
-  export type Task$projectArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Task$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Project
+     * Select specific fields to fetch from the Comment
      */
-    select?: ProjectSelect<ExtArgs> | null
+    select?: CommentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Project
+     * Omit specific fields from the Comment
      */
-    omit?: ProjectOmit<ExtArgs> | null
+    omit?: CommentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProjectInclude<ExtArgs> | null
-    where?: ProjectWhereInput
+    include?: CommentInclude<ExtArgs> | null
+    where?: CommentWhereInput
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    cursor?: CommentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
   }
 
   /**
@@ -4008,6 +4052,25 @@ export namespace Prisma {
   }
 
   /**
+   * Task.project
+   */
+  export type Task$projectArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Project
+     */
+    select?: ProjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Project
+     */
+    omit?: ProjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectInclude<ExtArgs> | null
+    where?: ProjectWhereInput
+  }
+
+  /**
    * Task.assignedTo
    */
   export type Task$assignedToArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4024,30 +4087,6 @@ export namespace Prisma {
      */
     include?: UserInclude<ExtArgs> | null
     where?: UserWhereInput
-  }
-
-  /**
-   * Task.comments
-   */
-  export type Task$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Comment
-     */
-    select?: CommentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Comment
-     */
-    omit?: CommentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CommentInclude<ExtArgs> | null
-    where?: CommentWhereInput
-    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
-    cursor?: CommentWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
   }
 
   /**
@@ -5332,8 +5371,8 @@ export namespace Prisma {
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    tasks?: boolean | Project$tasksArgs<ExtArgs>
     members?: boolean | Project$membersArgs<ExtArgs>
+    tasks?: boolean | Project$tasksArgs<ExtArgs>
     _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["project"]>
 
@@ -5363,8 +5402,8 @@ export namespace Prisma {
 
   export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["project"]>
   export type ProjectInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tasks?: boolean | Project$tasksArgs<ExtArgs>
     members?: boolean | Project$membersArgs<ExtArgs>
+    tasks?: boolean | Project$tasksArgs<ExtArgs>
     _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProjectIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -5373,8 +5412,8 @@ export namespace Prisma {
   export type $ProjectPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Project"
     objects: {
-      tasks: Prisma.$TaskPayload<ExtArgs>[]
       members: Prisma.$ProjectMemberPayload<ExtArgs>[]
+      tasks: Prisma.$TaskPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5776,8 +5815,8 @@ export namespace Prisma {
    */
   export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    tasks<T extends Project$tasksArgs<ExtArgs> = {}>(args?: Subset<T, Project$tasksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     members<T extends Project$membersArgs<ExtArgs> = {}>(args?: Subset<T, Project$membersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tasks<T extends Project$tasksArgs<ExtArgs> = {}>(args?: Subset<T, Project$tasksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6200,30 +6239,6 @@ export namespace Prisma {
   }
 
   /**
-   * Project.tasks
-   */
-  export type Project$tasksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Task
-     */
-    select?: TaskSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Task
-     */
-    omit?: TaskOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TaskInclude<ExtArgs> | null
-    where?: TaskWhereInput
-    orderBy?: TaskOrderByWithRelationInput | TaskOrderByWithRelationInput[]
-    cursor?: TaskWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TaskScalarFieldEnum | TaskScalarFieldEnum[]
-  }
-
-  /**
    * Project.members
    */
   export type Project$membersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6245,6 +6260,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ProjectMemberScalarFieldEnum | ProjectMemberScalarFieldEnum[]
+  }
+
+  /**
+   * Project.tasks
+   */
+  export type Project$tasksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Task
+     */
+    select?: TaskSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Task
+     */
+    omit?: TaskOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TaskInclude<ExtArgs> | null
+    where?: TaskWhereInput
+    orderBy?: TaskOrderByWithRelationInput | TaskOrderByWithRelationInput[]
+    cursor?: TaskWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TaskScalarFieldEnum | TaskScalarFieldEnum[]
   }
 
   /**
@@ -6464,8 +6503,8 @@ export namespace Prisma {
     userId?: boolean
     projectId?: boolean
     role?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     project?: boolean | ProjectDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["projectMember"]>
 
   export type ProjectMemberSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6473,8 +6512,8 @@ export namespace Prisma {
     userId?: boolean
     projectId?: boolean
     role?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     project?: boolean | ProjectDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["projectMember"]>
 
   export type ProjectMemberSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6482,8 +6521,8 @@ export namespace Prisma {
     userId?: boolean
     projectId?: boolean
     role?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     project?: boolean | ProjectDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["projectMember"]>
 
   export type ProjectMemberSelectScalar = {
@@ -6495,23 +6534,23 @@ export namespace Prisma {
 
   export type ProjectMemberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "projectId" | "role", ExtArgs["result"]["projectMember"]>
   export type ProjectMemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     project?: boolean | ProjectDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type ProjectMemberIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     project?: boolean | ProjectDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type ProjectMemberIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     project?: boolean | ProjectDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $ProjectMemberPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ProjectMember"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
       project: Prisma.$ProjectPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -6912,8 +6951,8 @@ export namespace Prisma {
    */
   export interface Prisma__ProjectMemberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     project<T extends ProjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProjectDefaultArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7567,8 +7606,8 @@ export namespace Prisma {
     userId?: boolean
     taskId?: boolean
     createdAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     task?: boolean | TaskDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["comment"]>
 
   export type CommentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7577,8 +7616,8 @@ export namespace Prisma {
     userId?: boolean
     taskId?: boolean
     createdAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     task?: boolean | TaskDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["comment"]>
 
   export type CommentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7587,8 +7626,8 @@ export namespace Prisma {
     userId?: boolean
     taskId?: boolean
     createdAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     task?: boolean | TaskDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["comment"]>
 
   export type CommentSelectScalar = {
@@ -7601,23 +7640,23 @@ export namespace Prisma {
 
   export type CommentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "message" | "userId" | "taskId" | "createdAt", ExtArgs["result"]["comment"]>
   export type CommentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     task?: boolean | TaskDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type CommentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     task?: boolean | TaskDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type CommentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     task?: boolean | TaskDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $CommentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Comment"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
       task: Prisma.$TaskPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -8019,8 +8058,8 @@ export namespace Prisma {
    */
   export interface Prisma__CommentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     task<T extends TaskDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TaskDefaultArgs<ExtArgs>>): Prisma__TaskClient<$Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8490,7 +8529,10 @@ export namespace Prisma {
     firstName: 'firstName',
     lastName: 'lastName',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    avatar: 'avatar',
+    resetToken: 'resetToken',
+    resetTokenExpiry: 'resetTokenExpiry'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -8508,10 +8550,10 @@ export namespace Prisma {
     status: 'status',
     attachmentPath: 'attachmentPath',
     recurrence: 'recurrence',
-    dependsOnId: 'dependsOnId',
-    userId: 'userId',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    dependsOnId: 'dependsOnId',
+    userId: 'userId'
   };
 
   export type TaskScalarFieldEnum = (typeof TaskScalarFieldEnum)[keyof typeof TaskScalarFieldEnum]
@@ -8656,9 +8698,12 @@ export namespace Prisma {
     lastName?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    tasks?: TaskListRelationFilter
+    avatar?: StringNullableFilter<"User"> | string | null
+    resetToken?: StringNullableFilter<"User"> | string | null
+    resetTokenExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
     comments?: CommentListRelationFilter
     projects?: ProjectMemberListRelationFilter
+    tasks?: TaskListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -8669,9 +8714,12 @@ export namespace Prisma {
     lastName?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    tasks?: TaskOrderByRelationAggregateInput
+    avatar?: SortOrderInput | SortOrder
+    resetToken?: SortOrderInput | SortOrder
+    resetTokenExpiry?: SortOrderInput | SortOrder
     comments?: CommentOrderByRelationAggregateInput
     projects?: ProjectMemberOrderByRelationAggregateInput
+    tasks?: TaskOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -8685,9 +8733,12 @@ export namespace Prisma {
     lastName?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    tasks?: TaskListRelationFilter
+    avatar?: StringNullableFilter<"User"> | string | null
+    resetToken?: StringNullableFilter<"User"> | string | null
+    resetTokenExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
     comments?: CommentListRelationFilter
     projects?: ProjectMemberListRelationFilter
+    tasks?: TaskListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -8698,6 +8749,9 @@ export namespace Prisma {
     lastName?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    avatar?: SortOrderInput | SortOrder
+    resetToken?: SortOrderInput | SortOrder
+    resetTokenExpiry?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -8716,6 +8770,9 @@ export namespace Prisma {
     lastName?: StringWithAggregatesFilter<"User"> | string
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    avatar?: StringNullableWithAggregatesFilter<"User"> | string | null
+    resetToken?: StringNullableWithAggregatesFilter<"User"> | string | null
+    resetTokenExpiry?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   }
 
   export type TaskWhereInput = {
@@ -8733,16 +8790,16 @@ export namespace Prisma {
     status?: StringFilter<"Task"> | string
     attachmentPath?: StringNullableFilter<"Task"> | string | null
     recurrence?: StringNullableFilter<"Task"> | string | null
-    dependsOnId?: IntNullableFilter<"Task"> | number | null
-    userId?: IntNullableFilter<"Task"> | number | null
     createdAt?: DateTimeFilter<"Task"> | Date | string
     updatedAt?: DateTimeFilter<"Task"> | Date | string
-    project?: XOR<ProjectNullableScalarRelationFilter, ProjectWhereInput> | null
+    dependsOnId?: IntNullableFilter<"Task"> | number | null
+    userId?: IntNullableFilter<"Task"> | number | null
+    comments?: CommentListRelationFilter
     category?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
     dependsOn?: XOR<TaskNullableScalarRelationFilter, TaskWhereInput> | null
     dependentTasks?: TaskListRelationFilter
+    project?: XOR<ProjectNullableScalarRelationFilter, ProjectWhereInput> | null
     assignedTo?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    comments?: CommentListRelationFilter
   }
 
   export type TaskOrderByWithRelationInput = {
@@ -8757,16 +8814,16 @@ export namespace Prisma {
     status?: SortOrder
     attachmentPath?: SortOrderInput | SortOrder
     recurrence?: SortOrderInput | SortOrder
-    dependsOnId?: SortOrderInput | SortOrder
-    userId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    project?: ProjectOrderByWithRelationInput
+    dependsOnId?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
+    comments?: CommentOrderByRelationAggregateInput
     category?: CategoryOrderByWithRelationInput
     dependsOn?: TaskOrderByWithRelationInput
     dependentTasks?: TaskOrderByRelationAggregateInput
+    project?: ProjectOrderByWithRelationInput
     assignedTo?: UserOrderByWithRelationInput
-    comments?: CommentOrderByRelationAggregateInput
   }
 
   export type TaskWhereUniqueInput = Prisma.AtLeast<{
@@ -8784,16 +8841,16 @@ export namespace Prisma {
     status?: StringFilter<"Task"> | string
     attachmentPath?: StringNullableFilter<"Task"> | string | null
     recurrence?: StringNullableFilter<"Task"> | string | null
-    dependsOnId?: IntNullableFilter<"Task"> | number | null
-    userId?: IntNullableFilter<"Task"> | number | null
     createdAt?: DateTimeFilter<"Task"> | Date | string
     updatedAt?: DateTimeFilter<"Task"> | Date | string
-    project?: XOR<ProjectNullableScalarRelationFilter, ProjectWhereInput> | null
+    dependsOnId?: IntNullableFilter<"Task"> | number | null
+    userId?: IntNullableFilter<"Task"> | number | null
+    comments?: CommentListRelationFilter
     category?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
     dependsOn?: XOR<TaskNullableScalarRelationFilter, TaskWhereInput> | null
     dependentTasks?: TaskListRelationFilter
+    project?: XOR<ProjectNullableScalarRelationFilter, ProjectWhereInput> | null
     assignedTo?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    comments?: CommentListRelationFilter
   }, "id">
 
   export type TaskOrderByWithAggregationInput = {
@@ -8808,10 +8865,10 @@ export namespace Prisma {
     status?: SortOrder
     attachmentPath?: SortOrderInput | SortOrder
     recurrence?: SortOrderInput | SortOrder
-    dependsOnId?: SortOrderInput | SortOrder
-    userId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    dependsOnId?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
     _count?: TaskCountOrderByAggregateInput
     _avg?: TaskAvgOrderByAggregateInput
     _max?: TaskMaxOrderByAggregateInput
@@ -8834,10 +8891,10 @@ export namespace Prisma {
     status?: StringWithAggregatesFilter<"Task"> | string
     attachmentPath?: StringNullableWithAggregatesFilter<"Task"> | string | null
     recurrence?: StringNullableWithAggregatesFilter<"Task"> | string | null
-    dependsOnId?: IntNullableWithAggregatesFilter<"Task"> | number | null
-    userId?: IntNullableWithAggregatesFilter<"Task"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"Task"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Task"> | Date | string
+    dependsOnId?: IntNullableWithAggregatesFilter<"Task"> | number | null
+    userId?: IntNullableWithAggregatesFilter<"Task"> | number | null
   }
 
   export type CategoryWhereInput = {
@@ -8891,8 +8948,8 @@ export namespace Prisma {
     description?: StringNullableFilter<"Project"> | string | null
     createdAt?: DateTimeFilter<"Project"> | Date | string
     updatedAt?: DateTimeFilter<"Project"> | Date | string
-    tasks?: TaskListRelationFilter
     members?: ProjectMemberListRelationFilter
+    tasks?: TaskListRelationFilter
   }
 
   export type ProjectOrderByWithRelationInput = {
@@ -8901,8 +8958,8 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    tasks?: TaskOrderByRelationAggregateInput
     members?: ProjectMemberOrderByRelationAggregateInput
+    tasks?: TaskOrderByRelationAggregateInput
   }
 
   export type ProjectWhereUniqueInput = Prisma.AtLeast<{
@@ -8914,8 +8971,8 @@ export namespace Prisma {
     description?: StringNullableFilter<"Project"> | string | null
     createdAt?: DateTimeFilter<"Project"> | Date | string
     updatedAt?: DateTimeFilter<"Project"> | Date | string
-    tasks?: TaskListRelationFilter
     members?: ProjectMemberListRelationFilter
+    tasks?: TaskListRelationFilter
   }, "id">
 
   export type ProjectOrderByWithAggregationInput = {
@@ -8950,8 +9007,8 @@ export namespace Prisma {
     userId?: IntFilter<"ProjectMember"> | number
     projectId?: IntFilter<"ProjectMember"> | number
     role?: StringFilter<"ProjectMember"> | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type ProjectMemberOrderByWithRelationInput = {
@@ -8959,8 +9016,8 @@ export namespace Prisma {
     userId?: SortOrder
     projectId?: SortOrder
     role?: SortOrder
-    user?: UserOrderByWithRelationInput
     project?: ProjectOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
   }
 
   export type ProjectMemberWhereUniqueInput = Prisma.AtLeast<{
@@ -8971,8 +9028,8 @@ export namespace Prisma {
     userId?: IntFilter<"ProjectMember"> | number
     projectId?: IntFilter<"ProjectMember"> | number
     role?: StringFilter<"ProjectMember"> | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type ProjectMemberOrderByWithAggregationInput = {
@@ -9006,8 +9063,8 @@ export namespace Prisma {
     userId?: IntFilter<"Comment"> | number
     taskId?: IntFilter<"Comment"> | number
     createdAt?: DateTimeFilter<"Comment"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     task?: XOR<TaskScalarRelationFilter, TaskWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type CommentOrderByWithRelationInput = {
@@ -9016,8 +9073,8 @@ export namespace Prisma {
     userId?: SortOrder
     taskId?: SortOrder
     createdAt?: SortOrder
-    user?: UserOrderByWithRelationInput
     task?: TaskOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
   }
 
   export type CommentWhereUniqueInput = Prisma.AtLeast<{
@@ -9029,8 +9086,8 @@ export namespace Prisma {
     userId?: IntFilter<"Comment"> | number
     taskId?: IntFilter<"Comment"> | number
     createdAt?: DateTimeFilter<"Comment"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     task?: XOR<TaskScalarRelationFilter, TaskWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type CommentOrderByWithAggregationInput = {
@@ -9064,9 +9121,12 @@ export namespace Prisma {
     lastName: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    tasks?: TaskCreateNestedManyWithoutAssignedToInput
+    avatar?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
     comments?: CommentCreateNestedManyWithoutUserInput
     projects?: ProjectMemberCreateNestedManyWithoutUserInput
+    tasks?: TaskCreateNestedManyWithoutAssignedToInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -9077,9 +9137,12 @@ export namespace Prisma {
     lastName: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    tasks?: TaskUncheckedCreateNestedManyWithoutAssignedToInput
+    avatar?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     projects?: ProjectMemberUncheckedCreateNestedManyWithoutUserInput
+    tasks?: TaskUncheckedCreateNestedManyWithoutAssignedToInput
   }
 
   export type UserUpdateInput = {
@@ -9089,9 +9152,12 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tasks?: TaskUpdateManyWithoutAssignedToNestedInput
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     comments?: CommentUpdateManyWithoutUserNestedInput
     projects?: ProjectMemberUpdateManyWithoutUserNestedInput
+    tasks?: TaskUpdateManyWithoutAssignedToNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -9102,9 +9168,12 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tasks?: TaskUncheckedUpdateManyWithoutAssignedToNestedInput
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     projects?: ProjectMemberUncheckedUpdateManyWithoutUserNestedInput
+    tasks?: TaskUncheckedUpdateManyWithoutAssignedToNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -9115,6 +9184,9 @@ export namespace Prisma {
     lastName: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    avatar?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -9124,6 +9196,9 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -9134,6 +9209,9 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type TaskCreateInput = {
@@ -9147,12 +9225,12 @@ export namespace Prisma {
     recurrence?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    project?: ProjectCreateNestedOneWithoutTasksInput
+    comments?: CommentCreateNestedManyWithoutTaskInput
     category?: CategoryCreateNestedOneWithoutTasksInput
     dependsOn?: TaskCreateNestedOneWithoutDependentTasksInput
     dependentTasks?: TaskCreateNestedManyWithoutDependsOnInput
+    project?: ProjectCreateNestedOneWithoutTasksInput
     assignedTo?: UserCreateNestedOneWithoutTasksInput
-    comments?: CommentCreateNestedManyWithoutTaskInput
   }
 
   export type TaskUncheckedCreateInput = {
@@ -9167,12 +9245,12 @@ export namespace Prisma {
     status?: string
     attachmentPath?: string | null
     recurrence?: string | null
-    dependsOnId?: number | null
-    userId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    dependentTasks?: TaskUncheckedCreateNestedManyWithoutDependsOnInput
+    dependsOnId?: number | null
+    userId?: number | null
     comments?: CommentUncheckedCreateNestedManyWithoutTaskInput
+    dependentTasks?: TaskUncheckedCreateNestedManyWithoutDependsOnInput
   }
 
   export type TaskUpdateInput = {
@@ -9186,12 +9264,12 @@ export namespace Prisma {
     recurrence?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    project?: ProjectUpdateOneWithoutTasksNestedInput
+    comments?: CommentUpdateManyWithoutTaskNestedInput
     category?: CategoryUpdateOneWithoutTasksNestedInput
     dependsOn?: TaskUpdateOneWithoutDependentTasksNestedInput
     dependentTasks?: TaskUpdateManyWithoutDependsOnNestedInput
+    project?: ProjectUpdateOneWithoutTasksNestedInput
     assignedTo?: UserUpdateOneWithoutTasksNestedInput
-    comments?: CommentUpdateManyWithoutTaskNestedInput
   }
 
   export type TaskUncheckedUpdateInput = {
@@ -9206,12 +9284,12 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
     recurrence?: NullableStringFieldUpdateOperationsInput | string | null
-    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    dependentTasks?: TaskUncheckedUpdateManyWithoutDependsOnNestedInput
+    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
     comments?: CommentUncheckedUpdateManyWithoutTaskNestedInput
+    dependentTasks?: TaskUncheckedUpdateManyWithoutDependsOnNestedInput
   }
 
   export type TaskCreateManyInput = {
@@ -9226,10 +9304,10 @@ export namespace Prisma {
     status?: string
     attachmentPath?: string | null
     recurrence?: string | null
-    dependsOnId?: number | null
-    userId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    dependsOnId?: number | null
+    userId?: number | null
   }
 
   export type TaskUpdateManyMutationInput = {
@@ -9257,10 +9335,10 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
     recurrence?: NullableStringFieldUpdateOperationsInput | string | null
-    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type CategoryCreateInput = {
@@ -9304,8 +9382,8 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    tasks?: TaskCreateNestedManyWithoutProjectInput
     members?: ProjectMemberCreateNestedManyWithoutProjectInput
+    tasks?: TaskCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateInput = {
@@ -9314,8 +9392,8 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    tasks?: TaskUncheckedCreateNestedManyWithoutProjectInput
     members?: ProjectMemberUncheckedCreateNestedManyWithoutProjectInput
+    tasks?: TaskUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUpdateInput = {
@@ -9323,8 +9401,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tasks?: TaskUpdateManyWithoutProjectNestedInput
     members?: ProjectMemberUpdateManyWithoutProjectNestedInput
+    tasks?: TaskUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateInput = {
@@ -9333,8 +9411,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tasks?: TaskUncheckedUpdateManyWithoutProjectNestedInput
     members?: ProjectMemberUncheckedUpdateManyWithoutProjectNestedInput
+    tasks?: TaskUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateManyInput = {
@@ -9362,8 +9440,8 @@ export namespace Prisma {
 
   export type ProjectMemberCreateInput = {
     role: string
-    user: UserCreateNestedOneWithoutProjectsInput
     project: ProjectCreateNestedOneWithoutMembersInput
+    user: UserCreateNestedOneWithoutProjectsInput
   }
 
   export type ProjectMemberUncheckedCreateInput = {
@@ -9375,8 +9453,8 @@ export namespace Prisma {
 
   export type ProjectMemberUpdateInput = {
     role?: StringFieldUpdateOperationsInput | string
-    user?: UserUpdateOneRequiredWithoutProjectsNestedInput
     project?: ProjectUpdateOneRequiredWithoutMembersNestedInput
+    user?: UserUpdateOneRequiredWithoutProjectsNestedInput
   }
 
   export type ProjectMemberUncheckedUpdateInput = {
@@ -9407,8 +9485,8 @@ export namespace Prisma {
   export type CommentCreateInput = {
     message: string
     createdAt?: Date | string
-    user: UserCreateNestedOneWithoutCommentsInput
     task: TaskCreateNestedOneWithoutCommentsInput
+    user: UserCreateNestedOneWithoutCommentsInput
   }
 
   export type CommentUncheckedCreateInput = {
@@ -9422,8 +9500,8 @@ export namespace Prisma {
   export type CommentUpdateInput = {
     message?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutCommentsNestedInput
     task?: TaskUpdateOneRequiredWithoutCommentsNestedInput
+    user?: UserUpdateOneRequiredWithoutCommentsNestedInput
   }
 
   export type CommentUncheckedUpdateInput = {
@@ -9492,10 +9570,30 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type TaskListRelationFilter = {
-    every?: TaskWhereInput
-    some?: TaskWhereInput
-    none?: TaskWhereInput
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type CommentListRelationFilter = {
@@ -9510,8 +9608,15 @@ export namespace Prisma {
     none?: ProjectMemberWhereInput
   }
 
-  export type TaskOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type TaskListRelationFilter = {
+    every?: TaskWhereInput
+    some?: TaskWhereInput
+    none?: TaskWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type CommentOrderByRelationAggregateInput = {
@@ -9519,6 +9624,10 @@ export namespace Prisma {
   }
 
   export type ProjectMemberOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TaskOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -9530,6 +9639,9 @@ export namespace Prisma {
     lastName?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    avatar?: SortOrder
+    resetToken?: SortOrder
+    resetTokenExpiry?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -9544,6 +9656,9 @@ export namespace Prisma {
     lastName?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    avatar?: SortOrder
+    resetToken?: SortOrder
+    resetTokenExpiry?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -9554,6 +9669,9 @@ export namespace Prisma {
     lastName?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    avatar?: SortOrder
+    resetToken?: SortOrder
+    resetTokenExpiry?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -9608,7 +9726,7 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -9620,7 +9738,24 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -9634,22 +9769,6 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type ProjectNullableScalarRelationFilter = {
-    is?: ProjectWhereInput | null
-    isNot?: ProjectWhereInput | null
-  }
-
   export type CategoryNullableScalarRelationFilter = {
     is?: CategoryWhereInput | null
     isNot?: CategoryWhereInput | null
@@ -9660,14 +9779,14 @@ export namespace Prisma {
     isNot?: TaskWhereInput | null
   }
 
+  export type ProjectNullableScalarRelationFilter = {
+    is?: ProjectWhereInput | null
+    isNot?: ProjectWhereInput | null
+  }
+
   export type UserNullableScalarRelationFilter = {
     is?: UserWhereInput | null
     isNot?: UserWhereInput | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type TaskCountOrderByAggregateInput = {
@@ -9682,10 +9801,10 @@ export namespace Prisma {
     status?: SortOrder
     attachmentPath?: SortOrder
     recurrence?: SortOrder
-    dependsOnId?: SortOrder
-    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    dependsOnId?: SortOrder
+    userId?: SortOrder
   }
 
   export type TaskAvgOrderByAggregateInput = {
@@ -9709,10 +9828,10 @@ export namespace Prisma {
     status?: SortOrder
     attachmentPath?: SortOrder
     recurrence?: SortOrder
-    dependsOnId?: SortOrder
-    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    dependsOnId?: SortOrder
+    userId?: SortOrder
   }
 
   export type TaskMinOrderByAggregateInput = {
@@ -9727,10 +9846,10 @@ export namespace Prisma {
     status?: SortOrder
     attachmentPath?: SortOrder
     recurrence?: SortOrder
-    dependsOnId?: SortOrder
-    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    dependsOnId?: SortOrder
+    userId?: SortOrder
   }
 
   export type TaskSumOrderByAggregateInput = {
@@ -9740,24 +9859,6 @@ export namespace Prisma {
     estimatedTime?: SortOrder
     dependsOnId?: SortOrder
     userId?: SortOrder
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -9774,20 +9875,6 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type CategoryCountOrderByAggregateInput = {
@@ -9845,14 +9932,14 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
-  }
-
   export type ProjectScalarRelationFilter = {
     is?: ProjectWhereInput
     isNot?: ProjectWhereInput
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
   }
 
   export type ProjectMemberCountOrderByAggregateInput = {
@@ -9929,13 +10016,6 @@ export namespace Prisma {
     taskId?: SortOrder
   }
 
-  export type TaskCreateNestedManyWithoutAssignedToInput = {
-    create?: XOR<TaskCreateWithoutAssignedToInput, TaskUncheckedCreateWithoutAssignedToInput> | TaskCreateWithoutAssignedToInput[] | TaskUncheckedCreateWithoutAssignedToInput[]
-    connectOrCreate?: TaskCreateOrConnectWithoutAssignedToInput | TaskCreateOrConnectWithoutAssignedToInput[]
-    createMany?: TaskCreateManyAssignedToInputEnvelope
-    connect?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
-  }
-
   export type CommentCreateNestedManyWithoutUserInput = {
     create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
     connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
@@ -9950,7 +10030,7 @@ export namespace Prisma {
     connect?: ProjectMemberWhereUniqueInput | ProjectMemberWhereUniqueInput[]
   }
 
-  export type TaskUncheckedCreateNestedManyWithoutAssignedToInput = {
+  export type TaskCreateNestedManyWithoutAssignedToInput = {
     create?: XOR<TaskCreateWithoutAssignedToInput, TaskUncheckedCreateWithoutAssignedToInput> | TaskCreateWithoutAssignedToInput[] | TaskUncheckedCreateWithoutAssignedToInput[]
     connectOrCreate?: TaskCreateOrConnectWithoutAssignedToInput | TaskCreateOrConnectWithoutAssignedToInput[]
     createMany?: TaskCreateManyAssignedToInputEnvelope
@@ -9971,6 +10051,13 @@ export namespace Prisma {
     connect?: ProjectMemberWhereUniqueInput | ProjectMemberWhereUniqueInput[]
   }
 
+  export type TaskUncheckedCreateNestedManyWithoutAssignedToInput = {
+    create?: XOR<TaskCreateWithoutAssignedToInput, TaskUncheckedCreateWithoutAssignedToInput> | TaskCreateWithoutAssignedToInput[] | TaskUncheckedCreateWithoutAssignedToInput[]
+    connectOrCreate?: TaskCreateOrConnectWithoutAssignedToInput | TaskCreateOrConnectWithoutAssignedToInput[]
+    createMany?: TaskCreateManyAssignedToInputEnvelope
+    connect?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -9979,18 +10066,12 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type TaskUpdateManyWithoutAssignedToNestedInput = {
-    create?: XOR<TaskCreateWithoutAssignedToInput, TaskUncheckedCreateWithoutAssignedToInput> | TaskCreateWithoutAssignedToInput[] | TaskUncheckedCreateWithoutAssignedToInput[]
-    connectOrCreate?: TaskCreateOrConnectWithoutAssignedToInput | TaskCreateOrConnectWithoutAssignedToInput[]
-    upsert?: TaskUpsertWithWhereUniqueWithoutAssignedToInput | TaskUpsertWithWhereUniqueWithoutAssignedToInput[]
-    createMany?: TaskCreateManyAssignedToInputEnvelope
-    set?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
-    disconnect?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
-    delete?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
-    connect?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
-    update?: TaskUpdateWithWhereUniqueWithoutAssignedToInput | TaskUpdateWithWhereUniqueWithoutAssignedToInput[]
-    updateMany?: TaskUpdateManyWithWhereWithoutAssignedToInput | TaskUpdateManyWithWhereWithoutAssignedToInput[]
-    deleteMany?: TaskScalarWhereInput | TaskScalarWhereInput[]
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type CommentUpdateManyWithoutUserNestedInput = {
@@ -10021,15 +10102,7 @@ export namespace Prisma {
     deleteMany?: ProjectMemberScalarWhereInput | ProjectMemberScalarWhereInput[]
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type TaskUncheckedUpdateManyWithoutAssignedToNestedInput = {
+  export type TaskUpdateManyWithoutAssignedToNestedInput = {
     create?: XOR<TaskCreateWithoutAssignedToInput, TaskUncheckedCreateWithoutAssignedToInput> | TaskCreateWithoutAssignedToInput[] | TaskUncheckedCreateWithoutAssignedToInput[]
     connectOrCreate?: TaskCreateOrConnectWithoutAssignedToInput | TaskCreateOrConnectWithoutAssignedToInput[]
     upsert?: TaskUpsertWithWhereUniqueWithoutAssignedToInput | TaskUpsertWithWhereUniqueWithoutAssignedToInput[]
@@ -10041,6 +10114,14 @@ export namespace Prisma {
     update?: TaskUpdateWithWhereUniqueWithoutAssignedToInput | TaskUpdateWithWhereUniqueWithoutAssignedToInput[]
     updateMany?: TaskUpdateManyWithWhereWithoutAssignedToInput | TaskUpdateManyWithWhereWithoutAssignedToInput[]
     deleteMany?: TaskScalarWhereInput | TaskScalarWhereInput[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type CommentUncheckedUpdateManyWithoutUserNestedInput = {
@@ -10071,10 +10152,25 @@ export namespace Prisma {
     deleteMany?: ProjectMemberScalarWhereInput | ProjectMemberScalarWhereInput[]
   }
 
-  export type ProjectCreateNestedOneWithoutTasksInput = {
-    create?: XOR<ProjectCreateWithoutTasksInput, ProjectUncheckedCreateWithoutTasksInput>
-    connectOrCreate?: ProjectCreateOrConnectWithoutTasksInput
-    connect?: ProjectWhereUniqueInput
+  export type TaskUncheckedUpdateManyWithoutAssignedToNestedInput = {
+    create?: XOR<TaskCreateWithoutAssignedToInput, TaskUncheckedCreateWithoutAssignedToInput> | TaskCreateWithoutAssignedToInput[] | TaskUncheckedCreateWithoutAssignedToInput[]
+    connectOrCreate?: TaskCreateOrConnectWithoutAssignedToInput | TaskCreateOrConnectWithoutAssignedToInput[]
+    upsert?: TaskUpsertWithWhereUniqueWithoutAssignedToInput | TaskUpsertWithWhereUniqueWithoutAssignedToInput[]
+    createMany?: TaskCreateManyAssignedToInputEnvelope
+    set?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
+    disconnect?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
+    delete?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
+    connect?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
+    update?: TaskUpdateWithWhereUniqueWithoutAssignedToInput | TaskUpdateWithWhereUniqueWithoutAssignedToInput[]
+    updateMany?: TaskUpdateManyWithWhereWithoutAssignedToInput | TaskUpdateManyWithWhereWithoutAssignedToInput[]
+    deleteMany?: TaskScalarWhereInput | TaskScalarWhereInput[]
+  }
+
+  export type CommentCreateNestedManyWithoutTaskInput = {
+    create?: XOR<CommentCreateWithoutTaskInput, CommentUncheckedCreateWithoutTaskInput> | CommentCreateWithoutTaskInput[] | CommentUncheckedCreateWithoutTaskInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutTaskInput | CommentCreateOrConnectWithoutTaskInput[]
+    createMany?: CommentCreateManyTaskInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
   export type CategoryCreateNestedOneWithoutTasksInput = {
@@ -10096,13 +10192,19 @@ export namespace Prisma {
     connect?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
   }
 
+  export type ProjectCreateNestedOneWithoutTasksInput = {
+    create?: XOR<ProjectCreateWithoutTasksInput, ProjectUncheckedCreateWithoutTasksInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutTasksInput
+    connect?: ProjectWhereUniqueInput
+  }
+
   export type UserCreateNestedOneWithoutTasksInput = {
     create?: XOR<UserCreateWithoutTasksInput, UserUncheckedCreateWithoutTasksInput>
     connectOrCreate?: UserCreateOrConnectWithoutTasksInput
     connect?: UserWhereUniqueInput
   }
 
-  export type CommentCreateNestedManyWithoutTaskInput = {
+  export type CommentUncheckedCreateNestedManyWithoutTaskInput = {
     create?: XOR<CommentCreateWithoutTaskInput, CommentUncheckedCreateWithoutTaskInput> | CommentCreateWithoutTaskInput[] | CommentUncheckedCreateWithoutTaskInput[]
     connectOrCreate?: CommentCreateOrConnectWithoutTaskInput | CommentCreateOrConnectWithoutTaskInput[]
     createMany?: CommentCreateManyTaskInputEnvelope
@@ -10116,21 +10218,6 @@ export namespace Prisma {
     connect?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
   }
 
-  export type CommentUncheckedCreateNestedManyWithoutTaskInput = {
-    create?: XOR<CommentCreateWithoutTaskInput, CommentUncheckedCreateWithoutTaskInput> | CommentCreateWithoutTaskInput[] | CommentUncheckedCreateWithoutTaskInput[]
-    connectOrCreate?: CommentCreateOrConnectWithoutTaskInput | CommentCreateOrConnectWithoutTaskInput[]
-    createMany?: CommentCreateManyTaskInputEnvelope
-    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
-  }
-
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -10139,14 +10226,18 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type ProjectUpdateOneWithoutTasksNestedInput = {
-    create?: XOR<ProjectCreateWithoutTasksInput, ProjectUncheckedCreateWithoutTasksInput>
-    connectOrCreate?: ProjectCreateOrConnectWithoutTasksInput
-    upsert?: ProjectUpsertWithoutTasksInput
-    disconnect?: ProjectWhereInput | boolean
-    delete?: ProjectWhereInput | boolean
-    connect?: ProjectWhereUniqueInput
-    update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutTasksInput, ProjectUpdateWithoutTasksInput>, ProjectUncheckedUpdateWithoutTasksInput>
+  export type CommentUpdateManyWithoutTaskNestedInput = {
+    create?: XOR<CommentCreateWithoutTaskInput, CommentUncheckedCreateWithoutTaskInput> | CommentCreateWithoutTaskInput[] | CommentUncheckedCreateWithoutTaskInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutTaskInput | CommentCreateOrConnectWithoutTaskInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutTaskInput | CommentUpsertWithWhereUniqueWithoutTaskInput[]
+    createMany?: CommentCreateManyTaskInputEnvelope
+    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutTaskInput | CommentUpdateWithWhereUniqueWithoutTaskInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutTaskInput | CommentUpdateManyWithWhereWithoutTaskInput[]
+    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
   export type CategoryUpdateOneWithoutTasksNestedInput = {
@@ -10183,6 +10274,16 @@ export namespace Prisma {
     deleteMany?: TaskScalarWhereInput | TaskScalarWhereInput[]
   }
 
+  export type ProjectUpdateOneWithoutTasksNestedInput = {
+    create?: XOR<ProjectCreateWithoutTasksInput, ProjectUncheckedCreateWithoutTasksInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutTasksInput
+    upsert?: ProjectUpsertWithoutTasksInput
+    disconnect?: ProjectWhereInput | boolean
+    delete?: ProjectWhereInput | boolean
+    connect?: ProjectWhereUniqueInput
+    update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutTasksInput, ProjectUpdateWithoutTasksInput>, ProjectUncheckedUpdateWithoutTasksInput>
+  }
+
   export type UserUpdateOneWithoutTasksNestedInput = {
     create?: XOR<UserCreateWithoutTasksInput, UserUncheckedCreateWithoutTasksInput>
     connectOrCreate?: UserCreateOrConnectWithoutTasksInput
@@ -10193,7 +10294,7 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTasksInput, UserUpdateWithoutTasksInput>, UserUncheckedUpdateWithoutTasksInput>
   }
 
-  export type CommentUpdateManyWithoutTaskNestedInput = {
+  export type CommentUncheckedUpdateManyWithoutTaskNestedInput = {
     create?: XOR<CommentCreateWithoutTaskInput, CommentUncheckedCreateWithoutTaskInput> | CommentCreateWithoutTaskInput[] | CommentUncheckedCreateWithoutTaskInput[]
     connectOrCreate?: CommentCreateOrConnectWithoutTaskInput | CommentCreateOrConnectWithoutTaskInput[]
     upsert?: CommentUpsertWithWhereUniqueWithoutTaskInput | CommentUpsertWithWhereUniqueWithoutTaskInput[]
@@ -10219,20 +10320,6 @@ export namespace Prisma {
     update?: TaskUpdateWithWhereUniqueWithoutDependsOnInput | TaskUpdateWithWhereUniqueWithoutDependsOnInput[]
     updateMany?: TaskUpdateManyWithWhereWithoutDependsOnInput | TaskUpdateManyWithWhereWithoutDependsOnInput[]
     deleteMany?: TaskScalarWhereInput | TaskScalarWhereInput[]
-  }
-
-  export type CommentUncheckedUpdateManyWithoutTaskNestedInput = {
-    create?: XOR<CommentCreateWithoutTaskInput, CommentUncheckedCreateWithoutTaskInput> | CommentCreateWithoutTaskInput[] | CommentUncheckedCreateWithoutTaskInput[]
-    connectOrCreate?: CommentCreateOrConnectWithoutTaskInput | CommentCreateOrConnectWithoutTaskInput[]
-    upsert?: CommentUpsertWithWhereUniqueWithoutTaskInput | CommentUpsertWithWhereUniqueWithoutTaskInput[]
-    createMany?: CommentCreateManyTaskInputEnvelope
-    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    update?: CommentUpdateWithWhereUniqueWithoutTaskInput | CommentUpdateWithWhereUniqueWithoutTaskInput[]
-    updateMany?: CommentUpdateManyWithWhereWithoutTaskInput | CommentUpdateManyWithWhereWithoutTaskInput[]
-    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
   export type TaskCreateNestedManyWithoutCategoryInput = {
@@ -10277,13 +10364,6 @@ export namespace Prisma {
     deleteMany?: TaskScalarWhereInput | TaskScalarWhereInput[]
   }
 
-  export type TaskCreateNestedManyWithoutProjectInput = {
-    create?: XOR<TaskCreateWithoutProjectInput, TaskUncheckedCreateWithoutProjectInput> | TaskCreateWithoutProjectInput[] | TaskUncheckedCreateWithoutProjectInput[]
-    connectOrCreate?: TaskCreateOrConnectWithoutProjectInput | TaskCreateOrConnectWithoutProjectInput[]
-    createMany?: TaskCreateManyProjectInputEnvelope
-    connect?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
-  }
-
   export type ProjectMemberCreateNestedManyWithoutProjectInput = {
     create?: XOR<ProjectMemberCreateWithoutProjectInput, ProjectMemberUncheckedCreateWithoutProjectInput> | ProjectMemberCreateWithoutProjectInput[] | ProjectMemberUncheckedCreateWithoutProjectInput[]
     connectOrCreate?: ProjectMemberCreateOrConnectWithoutProjectInput | ProjectMemberCreateOrConnectWithoutProjectInput[]
@@ -10291,7 +10371,7 @@ export namespace Prisma {
     connect?: ProjectMemberWhereUniqueInput | ProjectMemberWhereUniqueInput[]
   }
 
-  export type TaskUncheckedCreateNestedManyWithoutProjectInput = {
+  export type TaskCreateNestedManyWithoutProjectInput = {
     create?: XOR<TaskCreateWithoutProjectInput, TaskUncheckedCreateWithoutProjectInput> | TaskCreateWithoutProjectInput[] | TaskUncheckedCreateWithoutProjectInput[]
     connectOrCreate?: TaskCreateOrConnectWithoutProjectInput | TaskCreateOrConnectWithoutProjectInput[]
     createMany?: TaskCreateManyProjectInputEnvelope
@@ -10305,18 +10385,11 @@ export namespace Prisma {
     connect?: ProjectMemberWhereUniqueInput | ProjectMemberWhereUniqueInput[]
   }
 
-  export type TaskUpdateManyWithoutProjectNestedInput = {
+  export type TaskUncheckedCreateNestedManyWithoutProjectInput = {
     create?: XOR<TaskCreateWithoutProjectInput, TaskUncheckedCreateWithoutProjectInput> | TaskCreateWithoutProjectInput[] | TaskUncheckedCreateWithoutProjectInput[]
     connectOrCreate?: TaskCreateOrConnectWithoutProjectInput | TaskCreateOrConnectWithoutProjectInput[]
-    upsert?: TaskUpsertWithWhereUniqueWithoutProjectInput | TaskUpsertWithWhereUniqueWithoutProjectInput[]
     createMany?: TaskCreateManyProjectInputEnvelope
-    set?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
-    disconnect?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
-    delete?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
     connect?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
-    update?: TaskUpdateWithWhereUniqueWithoutProjectInput | TaskUpdateWithWhereUniqueWithoutProjectInput[]
-    updateMany?: TaskUpdateManyWithWhereWithoutProjectInput | TaskUpdateManyWithWhereWithoutProjectInput[]
-    deleteMany?: TaskScalarWhereInput | TaskScalarWhereInput[]
   }
 
   export type ProjectMemberUpdateManyWithoutProjectNestedInput = {
@@ -10333,7 +10406,7 @@ export namespace Prisma {
     deleteMany?: ProjectMemberScalarWhereInput | ProjectMemberScalarWhereInput[]
   }
 
-  export type TaskUncheckedUpdateManyWithoutProjectNestedInput = {
+  export type TaskUpdateManyWithoutProjectNestedInput = {
     create?: XOR<TaskCreateWithoutProjectInput, TaskUncheckedCreateWithoutProjectInput> | TaskCreateWithoutProjectInput[] | TaskUncheckedCreateWithoutProjectInput[]
     connectOrCreate?: TaskCreateOrConnectWithoutProjectInput | TaskCreateOrConnectWithoutProjectInput[]
     upsert?: TaskUpsertWithWhereUniqueWithoutProjectInput | TaskUpsertWithWhereUniqueWithoutProjectInput[]
@@ -10361,10 +10434,18 @@ export namespace Prisma {
     deleteMany?: ProjectMemberScalarWhereInput | ProjectMemberScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutProjectsInput = {
-    create?: XOR<UserCreateWithoutProjectsInput, UserUncheckedCreateWithoutProjectsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutProjectsInput
-    connect?: UserWhereUniqueInput
+  export type TaskUncheckedUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<TaskCreateWithoutProjectInput, TaskUncheckedCreateWithoutProjectInput> | TaskCreateWithoutProjectInput[] | TaskUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: TaskCreateOrConnectWithoutProjectInput | TaskCreateOrConnectWithoutProjectInput[]
+    upsert?: TaskUpsertWithWhereUniqueWithoutProjectInput | TaskUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: TaskCreateManyProjectInputEnvelope
+    set?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
+    disconnect?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
+    delete?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
+    connect?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
+    update?: TaskUpdateWithWhereUniqueWithoutProjectInput | TaskUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: TaskUpdateManyWithWhereWithoutProjectInput | TaskUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: TaskScalarWhereInput | TaskScalarWhereInput[]
   }
 
   export type ProjectCreateNestedOneWithoutMembersInput = {
@@ -10373,12 +10454,10 @@ export namespace Prisma {
     connect?: ProjectWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutProjectsNestedInput = {
+  export type UserCreateNestedOneWithoutProjectsInput = {
     create?: XOR<UserCreateWithoutProjectsInput, UserUncheckedCreateWithoutProjectsInput>
     connectOrCreate?: UserCreateOrConnectWithoutProjectsInput
-    upsert?: UserUpsertWithoutProjectsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProjectsInput, UserUpdateWithoutProjectsInput>, UserUncheckedUpdateWithoutProjectsInput>
   }
 
   export type ProjectUpdateOneRequiredWithoutMembersNestedInput = {
@@ -10389,10 +10468,12 @@ export namespace Prisma {
     update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutMembersInput, ProjectUpdateWithoutMembersInput>, ProjectUncheckedUpdateWithoutMembersInput>
   }
 
-  export type UserCreateNestedOneWithoutCommentsInput = {
-    create?: XOR<UserCreateWithoutCommentsInput, UserUncheckedCreateWithoutCommentsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCommentsInput
+  export type UserUpdateOneRequiredWithoutProjectsNestedInput = {
+    create?: XOR<UserCreateWithoutProjectsInput, UserUncheckedCreateWithoutProjectsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProjectsInput
+    upsert?: UserUpsertWithoutProjectsInput
     connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProjectsInput, UserUpdateWithoutProjectsInput>, UserUncheckedUpdateWithoutProjectsInput>
   }
 
   export type TaskCreateNestedOneWithoutCommentsInput = {
@@ -10401,12 +10482,10 @@ export namespace Prisma {
     connect?: TaskWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutCommentsNestedInput = {
+  export type UserCreateNestedOneWithoutCommentsInput = {
     create?: XOR<UserCreateWithoutCommentsInput, UserUncheckedCreateWithoutCommentsInput>
     connectOrCreate?: UserCreateOrConnectWithoutCommentsInput
-    upsert?: UserUpsertWithoutCommentsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCommentsInput, UserUpdateWithoutCommentsInput>, UserUncheckedUpdateWithoutCommentsInput>
   }
 
   export type TaskUpdateOneRequiredWithoutCommentsNestedInput = {
@@ -10415,6 +10494,14 @@ export namespace Prisma {
     upsert?: TaskUpsertWithoutCommentsInput
     connect?: TaskWhereUniqueInput
     update?: XOR<XOR<TaskUpdateToOneWithWhereWithoutCommentsInput, TaskUpdateWithoutCommentsInput>, TaskUncheckedUpdateWithoutCommentsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutCommentsNestedInput = {
+    create?: XOR<UserCreateWithoutCommentsInput, UserUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCommentsInput
+    upsert?: UserUpsertWithoutCommentsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCommentsInput, UserUpdateWithoutCommentsInput>, UserUncheckedUpdateWithoutCommentsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -10451,6 +10538,31 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -10511,42 +10623,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -10562,6 +10638,31 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -10589,67 +10690,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
-  export type TaskCreateWithoutAssignedToInput = {
-    title: string
-    description?: string | null
-    dueDate?: Date | string | null
-    priority?: string | null
-    estimatedTime?: number | null
-    status?: string
-    attachmentPath?: string | null
-    recurrence?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    project?: ProjectCreateNestedOneWithoutTasksInput
-    category?: CategoryCreateNestedOneWithoutTasksInput
-    dependsOn?: TaskCreateNestedOneWithoutDependentTasksInput
-    dependentTasks?: TaskCreateNestedManyWithoutDependsOnInput
-    comments?: CommentCreateNestedManyWithoutTaskInput
-  }
-
-  export type TaskUncheckedCreateWithoutAssignedToInput = {
-    id?: number
-    title: string
-    description?: string | null
-    projectId?: number | null
-    categoryId?: number | null
-    dueDate?: Date | string | null
-    priority?: string | null
-    estimatedTime?: number | null
-    status?: string
-    attachmentPath?: string | null
-    recurrence?: string | null
-    dependsOnId?: number | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    dependentTasks?: TaskUncheckedCreateNestedManyWithoutDependsOnInput
-    comments?: CommentUncheckedCreateNestedManyWithoutTaskInput
-  }
-
-  export type TaskCreateOrConnectWithoutAssignedToInput = {
-    where: TaskWhereUniqueInput
-    create: XOR<TaskCreateWithoutAssignedToInput, TaskUncheckedCreateWithoutAssignedToInput>
-  }
-
-  export type TaskCreateManyAssignedToInputEnvelope = {
-    data: TaskCreateManyAssignedToInput | TaskCreateManyAssignedToInput[]
-    skipDuplicates?: boolean
   }
 
   export type CommentCreateWithoutUserInput = {
@@ -10696,41 +10736,51 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type TaskUpsertWithWhereUniqueWithoutAssignedToInput = {
+  export type TaskCreateWithoutAssignedToInput = {
+    title: string
+    description?: string | null
+    dueDate?: Date | string | null
+    priority?: string | null
+    estimatedTime?: number | null
+    status?: string
+    attachmentPath?: string | null
+    recurrence?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    comments?: CommentCreateNestedManyWithoutTaskInput
+    category?: CategoryCreateNestedOneWithoutTasksInput
+    dependsOn?: TaskCreateNestedOneWithoutDependentTasksInput
+    dependentTasks?: TaskCreateNestedManyWithoutDependsOnInput
+    project?: ProjectCreateNestedOneWithoutTasksInput
+  }
+
+  export type TaskUncheckedCreateWithoutAssignedToInput = {
+    id?: number
+    title: string
+    description?: string | null
+    projectId?: number | null
+    categoryId?: number | null
+    dueDate?: Date | string | null
+    priority?: string | null
+    estimatedTime?: number | null
+    status?: string
+    attachmentPath?: string | null
+    recurrence?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    dependsOnId?: number | null
+    comments?: CommentUncheckedCreateNestedManyWithoutTaskInput
+    dependentTasks?: TaskUncheckedCreateNestedManyWithoutDependsOnInput
+  }
+
+  export type TaskCreateOrConnectWithoutAssignedToInput = {
     where: TaskWhereUniqueInput
-    update: XOR<TaskUpdateWithoutAssignedToInput, TaskUncheckedUpdateWithoutAssignedToInput>
     create: XOR<TaskCreateWithoutAssignedToInput, TaskUncheckedCreateWithoutAssignedToInput>
   }
 
-  export type TaskUpdateWithWhereUniqueWithoutAssignedToInput = {
-    where: TaskWhereUniqueInput
-    data: XOR<TaskUpdateWithoutAssignedToInput, TaskUncheckedUpdateWithoutAssignedToInput>
-  }
-
-  export type TaskUpdateManyWithWhereWithoutAssignedToInput = {
-    where: TaskScalarWhereInput
-    data: XOR<TaskUpdateManyMutationInput, TaskUncheckedUpdateManyWithoutAssignedToInput>
-  }
-
-  export type TaskScalarWhereInput = {
-    AND?: TaskScalarWhereInput | TaskScalarWhereInput[]
-    OR?: TaskScalarWhereInput[]
-    NOT?: TaskScalarWhereInput | TaskScalarWhereInput[]
-    id?: IntFilter<"Task"> | number
-    title?: StringFilter<"Task"> | string
-    description?: StringNullableFilter<"Task"> | string | null
-    projectId?: IntNullableFilter<"Task"> | number | null
-    categoryId?: IntNullableFilter<"Task"> | number | null
-    dueDate?: DateTimeNullableFilter<"Task"> | Date | string | null
-    priority?: StringNullableFilter<"Task"> | string | null
-    estimatedTime?: IntNullableFilter<"Task"> | number | null
-    status?: StringFilter<"Task"> | string
-    attachmentPath?: StringNullableFilter<"Task"> | string | null
-    recurrence?: StringNullableFilter<"Task"> | string | null
-    dependsOnId?: IntNullableFilter<"Task"> | number | null
-    userId?: IntNullableFilter<"Task"> | number | null
-    createdAt?: DateTimeFilter<"Task"> | Date | string
-    updatedAt?: DateTimeFilter<"Task"> | Date | string
+  export type TaskCreateManyAssignedToInputEnvelope = {
+    data: TaskCreateManyAssignedToInput | TaskCreateManyAssignedToInput[]
+    skipDuplicates?: boolean
   }
 
   export type CommentUpsertWithWhereUniqueWithoutUserInput = {
@@ -10786,26 +10836,64 @@ export namespace Prisma {
     role?: StringFilter<"ProjectMember"> | string
   }
 
-  export type ProjectCreateWithoutTasksInput = {
-    name: string
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    members?: ProjectMemberCreateNestedManyWithoutProjectInput
+  export type TaskUpsertWithWhereUniqueWithoutAssignedToInput = {
+    where: TaskWhereUniqueInput
+    update: XOR<TaskUpdateWithoutAssignedToInput, TaskUncheckedUpdateWithoutAssignedToInput>
+    create: XOR<TaskCreateWithoutAssignedToInput, TaskUncheckedCreateWithoutAssignedToInput>
   }
 
-  export type ProjectUncheckedCreateWithoutTasksInput = {
+  export type TaskUpdateWithWhereUniqueWithoutAssignedToInput = {
+    where: TaskWhereUniqueInput
+    data: XOR<TaskUpdateWithoutAssignedToInput, TaskUncheckedUpdateWithoutAssignedToInput>
+  }
+
+  export type TaskUpdateManyWithWhereWithoutAssignedToInput = {
+    where: TaskScalarWhereInput
+    data: XOR<TaskUpdateManyMutationInput, TaskUncheckedUpdateManyWithoutAssignedToInput>
+  }
+
+  export type TaskScalarWhereInput = {
+    AND?: TaskScalarWhereInput | TaskScalarWhereInput[]
+    OR?: TaskScalarWhereInput[]
+    NOT?: TaskScalarWhereInput | TaskScalarWhereInput[]
+    id?: IntFilter<"Task"> | number
+    title?: StringFilter<"Task"> | string
+    description?: StringNullableFilter<"Task"> | string | null
+    projectId?: IntNullableFilter<"Task"> | number | null
+    categoryId?: IntNullableFilter<"Task"> | number | null
+    dueDate?: DateTimeNullableFilter<"Task"> | Date | string | null
+    priority?: StringNullableFilter<"Task"> | string | null
+    estimatedTime?: IntNullableFilter<"Task"> | number | null
+    status?: StringFilter<"Task"> | string
+    attachmentPath?: StringNullableFilter<"Task"> | string | null
+    recurrence?: StringNullableFilter<"Task"> | string | null
+    createdAt?: DateTimeFilter<"Task"> | Date | string
+    updatedAt?: DateTimeFilter<"Task"> | Date | string
+    dependsOnId?: IntNullableFilter<"Task"> | number | null
+    userId?: IntNullableFilter<"Task"> | number | null
+  }
+
+  export type CommentCreateWithoutTaskInput = {
+    message: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutCommentsInput
+  }
+
+  export type CommentUncheckedCreateWithoutTaskInput = {
     id?: number
-    name: string
-    description?: string | null
+    message: string
+    userId: number
     createdAt?: Date | string
-    updatedAt?: Date | string
-    members?: ProjectMemberUncheckedCreateNestedManyWithoutProjectInput
   }
 
-  export type ProjectCreateOrConnectWithoutTasksInput = {
-    where: ProjectWhereUniqueInput
-    create: XOR<ProjectCreateWithoutTasksInput, ProjectUncheckedCreateWithoutTasksInput>
+  export type CommentCreateOrConnectWithoutTaskInput = {
+    where: CommentWhereUniqueInput
+    create: XOR<CommentCreateWithoutTaskInput, CommentUncheckedCreateWithoutTaskInput>
+  }
+
+  export type CommentCreateManyTaskInputEnvelope = {
+    data: CommentCreateManyTaskInput | CommentCreateManyTaskInput[]
+    skipDuplicates?: boolean
   }
 
   export type CategoryCreateWithoutTasksInput = {
@@ -10833,11 +10921,11 @@ export namespace Prisma {
     recurrence?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    project?: ProjectCreateNestedOneWithoutTasksInput
+    comments?: CommentCreateNestedManyWithoutTaskInput
     category?: CategoryCreateNestedOneWithoutTasksInput
     dependsOn?: TaskCreateNestedOneWithoutDependentTasksInput
+    project?: ProjectCreateNestedOneWithoutTasksInput
     assignedTo?: UserCreateNestedOneWithoutTasksInput
-    comments?: CommentCreateNestedManyWithoutTaskInput
   }
 
   export type TaskUncheckedCreateWithoutDependentTasksInput = {
@@ -10852,10 +10940,10 @@ export namespace Prisma {
     status?: string
     attachmentPath?: string | null
     recurrence?: string | null
-    dependsOnId?: number | null
-    userId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    dependsOnId?: number | null
+    userId?: number | null
     comments?: CommentUncheckedCreateNestedManyWithoutTaskInput
   }
 
@@ -10875,11 +10963,11 @@ export namespace Prisma {
     recurrence?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    project?: ProjectCreateNestedOneWithoutTasksInput
+    comments?: CommentCreateNestedManyWithoutTaskInput
     category?: CategoryCreateNestedOneWithoutTasksInput
     dependentTasks?: TaskCreateNestedManyWithoutDependsOnInput
+    project?: ProjectCreateNestedOneWithoutTasksInput
     assignedTo?: UserCreateNestedOneWithoutTasksInput
-    comments?: CommentCreateNestedManyWithoutTaskInput
   }
 
   export type TaskUncheckedCreateWithoutDependsOnInput = {
@@ -10894,11 +10982,11 @@ export namespace Prisma {
     status?: string
     attachmentPath?: string | null
     recurrence?: string | null
-    userId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    dependentTasks?: TaskUncheckedCreateNestedManyWithoutDependsOnInput
+    userId?: number | null
     comments?: CommentUncheckedCreateNestedManyWithoutTaskInput
+    dependentTasks?: TaskUncheckedCreateNestedManyWithoutDependsOnInput
   }
 
   export type TaskCreateOrConnectWithoutDependsOnInput = {
@@ -10911,6 +10999,28 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ProjectCreateWithoutTasksInput = {
+    name: string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    members?: ProjectMemberCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectUncheckedCreateWithoutTasksInput = {
+    id?: number
+    name: string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    members?: ProjectMemberUncheckedCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectCreateOrConnectWithoutTasksInput = {
+    where: ProjectWhereUniqueInput
+    create: XOR<ProjectCreateWithoutTasksInput, ProjectUncheckedCreateWithoutTasksInput>
+  }
+
   export type UserCreateWithoutTasksInput = {
     email: string
     password: string
@@ -10918,6 +11028,9 @@ export namespace Prisma {
     lastName: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    avatar?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
     comments?: CommentCreateNestedManyWithoutUserInput
     projects?: ProjectMemberCreateNestedManyWithoutUserInput
   }
@@ -10930,6 +11043,9 @@ export namespace Prisma {
     lastName: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    avatar?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     projects?: ProjectMemberUncheckedCreateNestedManyWithoutUserInput
   }
@@ -10939,55 +11055,20 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutTasksInput, UserUncheckedCreateWithoutTasksInput>
   }
 
-  export type CommentCreateWithoutTaskInput = {
-    message: string
-    createdAt?: Date | string
-    user: UserCreateNestedOneWithoutCommentsInput
-  }
-
-  export type CommentUncheckedCreateWithoutTaskInput = {
-    id?: number
-    message: string
-    userId: number
-    createdAt?: Date | string
-  }
-
-  export type CommentCreateOrConnectWithoutTaskInput = {
+  export type CommentUpsertWithWhereUniqueWithoutTaskInput = {
     where: CommentWhereUniqueInput
+    update: XOR<CommentUpdateWithoutTaskInput, CommentUncheckedUpdateWithoutTaskInput>
     create: XOR<CommentCreateWithoutTaskInput, CommentUncheckedCreateWithoutTaskInput>
   }
 
-  export type CommentCreateManyTaskInputEnvelope = {
-    data: CommentCreateManyTaskInput | CommentCreateManyTaskInput[]
-    skipDuplicates?: boolean
+  export type CommentUpdateWithWhereUniqueWithoutTaskInput = {
+    where: CommentWhereUniqueInput
+    data: XOR<CommentUpdateWithoutTaskInput, CommentUncheckedUpdateWithoutTaskInput>
   }
 
-  export type ProjectUpsertWithoutTasksInput = {
-    update: XOR<ProjectUpdateWithoutTasksInput, ProjectUncheckedUpdateWithoutTasksInput>
-    create: XOR<ProjectCreateWithoutTasksInput, ProjectUncheckedCreateWithoutTasksInput>
-    where?: ProjectWhereInput
-  }
-
-  export type ProjectUpdateToOneWithWhereWithoutTasksInput = {
-    where?: ProjectWhereInput
-    data: XOR<ProjectUpdateWithoutTasksInput, ProjectUncheckedUpdateWithoutTasksInput>
-  }
-
-  export type ProjectUpdateWithoutTasksInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    members?: ProjectMemberUpdateManyWithoutProjectNestedInput
-  }
-
-  export type ProjectUncheckedUpdateWithoutTasksInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    members?: ProjectMemberUncheckedUpdateManyWithoutProjectNestedInput
+  export type CommentUpdateManyWithWhereWithoutTaskInput = {
+    where: CommentScalarWhereInput
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutTaskInput>
   }
 
   export type CategoryUpsertWithoutTasksInput = {
@@ -11032,11 +11113,11 @@ export namespace Prisma {
     recurrence?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    project?: ProjectUpdateOneWithoutTasksNestedInput
+    comments?: CommentUpdateManyWithoutTaskNestedInput
     category?: CategoryUpdateOneWithoutTasksNestedInput
     dependsOn?: TaskUpdateOneWithoutDependentTasksNestedInput
+    project?: ProjectUpdateOneWithoutTasksNestedInput
     assignedTo?: UserUpdateOneWithoutTasksNestedInput
-    comments?: CommentUpdateManyWithoutTaskNestedInput
   }
 
   export type TaskUncheckedUpdateWithoutDependentTasksInput = {
@@ -11051,10 +11132,10 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
     recurrence?: NullableStringFieldUpdateOperationsInput | string | null
-    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
     comments?: CommentUncheckedUpdateManyWithoutTaskNestedInput
   }
 
@@ -11072,6 +11153,34 @@ export namespace Prisma {
   export type TaskUpdateManyWithWhereWithoutDependsOnInput = {
     where: TaskScalarWhereInput
     data: XOR<TaskUpdateManyMutationInput, TaskUncheckedUpdateManyWithoutDependsOnInput>
+  }
+
+  export type ProjectUpsertWithoutTasksInput = {
+    update: XOR<ProjectUpdateWithoutTasksInput, ProjectUncheckedUpdateWithoutTasksInput>
+    create: XOR<ProjectCreateWithoutTasksInput, ProjectUncheckedCreateWithoutTasksInput>
+    where?: ProjectWhereInput
+  }
+
+  export type ProjectUpdateToOneWithWhereWithoutTasksInput = {
+    where?: ProjectWhereInput
+    data: XOR<ProjectUpdateWithoutTasksInput, ProjectUncheckedUpdateWithoutTasksInput>
+  }
+
+  export type ProjectUpdateWithoutTasksInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    members?: ProjectMemberUpdateManyWithoutProjectNestedInput
+  }
+
+  export type ProjectUncheckedUpdateWithoutTasksInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    members?: ProjectMemberUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type UserUpsertWithoutTasksInput = {
@@ -11092,6 +11201,9 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     comments?: CommentUpdateManyWithoutUserNestedInput
     projects?: ProjectMemberUpdateManyWithoutUserNestedInput
   }
@@ -11104,24 +11216,11 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     projects?: ProjectMemberUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type CommentUpsertWithWhereUniqueWithoutTaskInput = {
-    where: CommentWhereUniqueInput
-    update: XOR<CommentUpdateWithoutTaskInput, CommentUncheckedUpdateWithoutTaskInput>
-    create: XOR<CommentCreateWithoutTaskInput, CommentUncheckedCreateWithoutTaskInput>
-  }
-
-  export type CommentUpdateWithWhereUniqueWithoutTaskInput = {
-    where: CommentWhereUniqueInput
-    data: XOR<CommentUpdateWithoutTaskInput, CommentUncheckedUpdateWithoutTaskInput>
-  }
-
-  export type CommentUpdateManyWithWhereWithoutTaskInput = {
-    where: CommentScalarWhereInput
-    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutTaskInput>
   }
 
   export type TaskCreateWithoutCategoryInput = {
@@ -11135,11 +11234,11 @@ export namespace Prisma {
     recurrence?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    project?: ProjectCreateNestedOneWithoutTasksInput
+    comments?: CommentCreateNestedManyWithoutTaskInput
     dependsOn?: TaskCreateNestedOneWithoutDependentTasksInput
     dependentTasks?: TaskCreateNestedManyWithoutDependsOnInput
+    project?: ProjectCreateNestedOneWithoutTasksInput
     assignedTo?: UserCreateNestedOneWithoutTasksInput
-    comments?: CommentCreateNestedManyWithoutTaskInput
   }
 
   export type TaskUncheckedCreateWithoutCategoryInput = {
@@ -11153,12 +11252,12 @@ export namespace Prisma {
     status?: string
     attachmentPath?: string | null
     recurrence?: string | null
-    dependsOnId?: number | null
-    userId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    dependentTasks?: TaskUncheckedCreateNestedManyWithoutDependsOnInput
+    dependsOnId?: number | null
+    userId?: number | null
     comments?: CommentUncheckedCreateNestedManyWithoutTaskInput
+    dependentTasks?: TaskUncheckedCreateNestedManyWithoutDependsOnInput
   }
 
   export type TaskCreateOrConnectWithoutCategoryInput = {
@@ -11187,53 +11286,6 @@ export namespace Prisma {
     data: XOR<TaskUpdateManyMutationInput, TaskUncheckedUpdateManyWithoutCategoryInput>
   }
 
-  export type TaskCreateWithoutProjectInput = {
-    title: string
-    description?: string | null
-    dueDate?: Date | string | null
-    priority?: string | null
-    estimatedTime?: number | null
-    status?: string
-    attachmentPath?: string | null
-    recurrence?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    category?: CategoryCreateNestedOneWithoutTasksInput
-    dependsOn?: TaskCreateNestedOneWithoutDependentTasksInput
-    dependentTasks?: TaskCreateNestedManyWithoutDependsOnInput
-    assignedTo?: UserCreateNestedOneWithoutTasksInput
-    comments?: CommentCreateNestedManyWithoutTaskInput
-  }
-
-  export type TaskUncheckedCreateWithoutProjectInput = {
-    id?: number
-    title: string
-    description?: string | null
-    categoryId?: number | null
-    dueDate?: Date | string | null
-    priority?: string | null
-    estimatedTime?: number | null
-    status?: string
-    attachmentPath?: string | null
-    recurrence?: string | null
-    dependsOnId?: number | null
-    userId?: number | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    dependentTasks?: TaskUncheckedCreateNestedManyWithoutDependsOnInput
-    comments?: CommentUncheckedCreateNestedManyWithoutTaskInput
-  }
-
-  export type TaskCreateOrConnectWithoutProjectInput = {
-    where: TaskWhereUniqueInput
-    create: XOR<TaskCreateWithoutProjectInput, TaskUncheckedCreateWithoutProjectInput>
-  }
-
-  export type TaskCreateManyProjectInputEnvelope = {
-    data: TaskCreateManyProjectInput | TaskCreateManyProjectInput[]
-    skipDuplicates?: boolean
-  }
-
   export type ProjectMemberCreateWithoutProjectInput = {
     role: string
     user: UserCreateNestedOneWithoutProjectsInput
@@ -11255,20 +11307,51 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type TaskUpsertWithWhereUniqueWithoutProjectInput = {
+  export type TaskCreateWithoutProjectInput = {
+    title: string
+    description?: string | null
+    dueDate?: Date | string | null
+    priority?: string | null
+    estimatedTime?: number | null
+    status?: string
+    attachmentPath?: string | null
+    recurrence?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    comments?: CommentCreateNestedManyWithoutTaskInput
+    category?: CategoryCreateNestedOneWithoutTasksInput
+    dependsOn?: TaskCreateNestedOneWithoutDependentTasksInput
+    dependentTasks?: TaskCreateNestedManyWithoutDependsOnInput
+    assignedTo?: UserCreateNestedOneWithoutTasksInput
+  }
+
+  export type TaskUncheckedCreateWithoutProjectInput = {
+    id?: number
+    title: string
+    description?: string | null
+    categoryId?: number | null
+    dueDate?: Date | string | null
+    priority?: string | null
+    estimatedTime?: number | null
+    status?: string
+    attachmentPath?: string | null
+    recurrence?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    dependsOnId?: number | null
+    userId?: number | null
+    comments?: CommentUncheckedCreateNestedManyWithoutTaskInput
+    dependentTasks?: TaskUncheckedCreateNestedManyWithoutDependsOnInput
+  }
+
+  export type TaskCreateOrConnectWithoutProjectInput = {
     where: TaskWhereUniqueInput
-    update: XOR<TaskUpdateWithoutProjectInput, TaskUncheckedUpdateWithoutProjectInput>
     create: XOR<TaskCreateWithoutProjectInput, TaskUncheckedCreateWithoutProjectInput>
   }
 
-  export type TaskUpdateWithWhereUniqueWithoutProjectInput = {
-    where: TaskWhereUniqueInput
-    data: XOR<TaskUpdateWithoutProjectInput, TaskUncheckedUpdateWithoutProjectInput>
-  }
-
-  export type TaskUpdateManyWithWhereWithoutProjectInput = {
-    where: TaskScalarWhereInput
-    data: XOR<TaskUpdateManyMutationInput, TaskUncheckedUpdateManyWithoutProjectInput>
+  export type TaskCreateManyProjectInputEnvelope = {
+    data: TaskCreateManyProjectInput | TaskCreateManyProjectInput[]
+    skipDuplicates?: boolean
   }
 
   export type ProjectMemberUpsertWithWhereUniqueWithoutProjectInput = {
@@ -11287,32 +11370,20 @@ export namespace Prisma {
     data: XOR<ProjectMemberUpdateManyMutationInput, ProjectMemberUncheckedUpdateManyWithoutProjectInput>
   }
 
-  export type UserCreateWithoutProjectsInput = {
-    email: string
-    password: string
-    firstName: string
-    lastName: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    tasks?: TaskCreateNestedManyWithoutAssignedToInput
-    comments?: CommentCreateNestedManyWithoutUserInput
+  export type TaskUpsertWithWhereUniqueWithoutProjectInput = {
+    where: TaskWhereUniqueInput
+    update: XOR<TaskUpdateWithoutProjectInput, TaskUncheckedUpdateWithoutProjectInput>
+    create: XOR<TaskCreateWithoutProjectInput, TaskUncheckedCreateWithoutProjectInput>
   }
 
-  export type UserUncheckedCreateWithoutProjectsInput = {
-    id?: number
-    email: string
-    password: string
-    firstName: string
-    lastName: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    tasks?: TaskUncheckedCreateNestedManyWithoutAssignedToInput
-    comments?: CommentUncheckedCreateNestedManyWithoutUserInput
+  export type TaskUpdateWithWhereUniqueWithoutProjectInput = {
+    where: TaskWhereUniqueInput
+    data: XOR<TaskUpdateWithoutProjectInput, TaskUncheckedUpdateWithoutProjectInput>
   }
 
-  export type UserCreateOrConnectWithoutProjectsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutProjectsInput, UserUncheckedCreateWithoutProjectsInput>
+  export type TaskUpdateManyWithWhereWithoutProjectInput = {
+    where: TaskScalarWhereInput
+    data: XOR<TaskUpdateManyMutationInput, TaskUncheckedUpdateManyWithoutProjectInput>
   }
 
   export type ProjectCreateWithoutMembersInput = {
@@ -11337,38 +11408,38 @@ export namespace Prisma {
     create: XOR<ProjectCreateWithoutMembersInput, ProjectUncheckedCreateWithoutMembersInput>
   }
 
-  export type UserUpsertWithoutProjectsInput = {
-    update: XOR<UserUpdateWithoutProjectsInput, UserUncheckedUpdateWithoutProjectsInput>
+  export type UserCreateWithoutProjectsInput = {
+    email: string
+    password: string
+    firstName: string
+    lastName: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    avatar?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    comments?: CommentCreateNestedManyWithoutUserInput
+    tasks?: TaskCreateNestedManyWithoutAssignedToInput
+  }
+
+  export type UserUncheckedCreateWithoutProjectsInput = {
+    id?: number
+    email: string
+    password: string
+    firstName: string
+    lastName: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    avatar?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    comments?: CommentUncheckedCreateNestedManyWithoutUserInput
+    tasks?: TaskUncheckedCreateNestedManyWithoutAssignedToInput
+  }
+
+  export type UserCreateOrConnectWithoutProjectsInput = {
+    where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutProjectsInput, UserUncheckedCreateWithoutProjectsInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutProjectsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutProjectsInput, UserUncheckedUpdateWithoutProjectsInput>
-  }
-
-  export type UserUpdateWithoutProjectsInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tasks?: TaskUpdateManyWithoutAssignedToNestedInput
-    comments?: CommentUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutProjectsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tasks?: TaskUncheckedUpdateManyWithoutAssignedToNestedInput
-    comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ProjectUpsertWithoutMembersInput = {
@@ -11399,32 +11470,44 @@ export namespace Prisma {
     tasks?: TaskUncheckedUpdateManyWithoutProjectNestedInput
   }
 
-  export type UserCreateWithoutCommentsInput = {
-    email: string
-    password: string
-    firstName: string
-    lastName: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    tasks?: TaskCreateNestedManyWithoutAssignedToInput
-    projects?: ProjectMemberCreateNestedManyWithoutUserInput
+  export type UserUpsertWithoutProjectsInput = {
+    update: XOR<UserUpdateWithoutProjectsInput, UserUncheckedUpdateWithoutProjectsInput>
+    create: XOR<UserCreateWithoutProjectsInput, UserUncheckedCreateWithoutProjectsInput>
+    where?: UserWhereInput
   }
 
-  export type UserUncheckedCreateWithoutCommentsInput = {
-    id?: number
-    email: string
-    password: string
-    firstName: string
-    lastName: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    tasks?: TaskUncheckedCreateNestedManyWithoutAssignedToInput
-    projects?: ProjectMemberUncheckedCreateNestedManyWithoutUserInput
+  export type UserUpdateToOneWithWhereWithoutProjectsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutProjectsInput, UserUncheckedUpdateWithoutProjectsInput>
   }
 
-  export type UserCreateOrConnectWithoutCommentsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutCommentsInput, UserUncheckedCreateWithoutCommentsInput>
+  export type UserUpdateWithoutProjectsInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    comments?: CommentUpdateManyWithoutUserNestedInput
+    tasks?: TaskUpdateManyWithoutAssignedToNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutProjectsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
+    tasks?: TaskUncheckedUpdateManyWithoutAssignedToNestedInput
   }
 
   export type TaskCreateWithoutCommentsInput = {
@@ -11438,10 +11521,10 @@ export namespace Prisma {
     recurrence?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    project?: ProjectCreateNestedOneWithoutTasksInput
     category?: CategoryCreateNestedOneWithoutTasksInput
     dependsOn?: TaskCreateNestedOneWithoutDependentTasksInput
     dependentTasks?: TaskCreateNestedManyWithoutDependsOnInput
+    project?: ProjectCreateNestedOneWithoutTasksInput
     assignedTo?: UserCreateNestedOneWithoutTasksInput
   }
 
@@ -11457,10 +11540,10 @@ export namespace Prisma {
     status?: string
     attachmentPath?: string | null
     recurrence?: string | null
-    dependsOnId?: number | null
-    userId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    dependsOnId?: number | null
+    userId?: number | null
     dependentTasks?: TaskUncheckedCreateNestedManyWithoutDependsOnInput
   }
 
@@ -11469,38 +11552,38 @@ export namespace Prisma {
     create: XOR<TaskCreateWithoutCommentsInput, TaskUncheckedCreateWithoutCommentsInput>
   }
 
-  export type UserUpsertWithoutCommentsInput = {
-    update: XOR<UserUpdateWithoutCommentsInput, UserUncheckedUpdateWithoutCommentsInput>
+  export type UserCreateWithoutCommentsInput = {
+    email: string
+    password: string
+    firstName: string
+    lastName: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    avatar?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    projects?: ProjectMemberCreateNestedManyWithoutUserInput
+    tasks?: TaskCreateNestedManyWithoutAssignedToInput
+  }
+
+  export type UserUncheckedCreateWithoutCommentsInput = {
+    id?: number
+    email: string
+    password: string
+    firstName: string
+    lastName: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    avatar?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    projects?: ProjectMemberUncheckedCreateNestedManyWithoutUserInput
+    tasks?: TaskUncheckedCreateNestedManyWithoutAssignedToInput
+  }
+
+  export type UserCreateOrConnectWithoutCommentsInput = {
+    where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutCommentsInput, UserUncheckedCreateWithoutCommentsInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutCommentsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutCommentsInput, UserUncheckedUpdateWithoutCommentsInput>
-  }
-
-  export type UserUpdateWithoutCommentsInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tasks?: TaskUpdateManyWithoutAssignedToNestedInput
-    projects?: ProjectMemberUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutCommentsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tasks?: TaskUncheckedUpdateManyWithoutAssignedToNestedInput
-    projects?: ProjectMemberUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TaskUpsertWithoutCommentsInput = {
@@ -11525,10 +11608,10 @@ export namespace Prisma {
     recurrence?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    project?: ProjectUpdateOneWithoutTasksNestedInput
     category?: CategoryUpdateOneWithoutTasksNestedInput
     dependsOn?: TaskUpdateOneWithoutDependentTasksNestedInput
     dependentTasks?: TaskUpdateManyWithoutDependsOnNestedInput
+    project?: ProjectUpdateOneWithoutTasksNestedInput
     assignedTo?: UserUpdateOneWithoutTasksNestedInput
   }
 
@@ -11544,28 +11627,51 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
     recurrence?: NullableStringFieldUpdateOperationsInput | string | null
-    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
     dependentTasks?: TaskUncheckedUpdateManyWithoutDependsOnNestedInput
   }
 
-  export type TaskCreateManyAssignedToInput = {
-    id?: number
-    title: string
-    description?: string | null
-    projectId?: number | null
-    categoryId?: number | null
-    dueDate?: Date | string | null
-    priority?: string | null
-    estimatedTime?: number | null
-    status?: string
-    attachmentPath?: string | null
-    recurrence?: string | null
-    dependsOnId?: number | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
+  export type UserUpsertWithoutCommentsInput = {
+    update: XOR<UserUpdateWithoutCommentsInput, UserUncheckedUpdateWithoutCommentsInput>
+    create: XOR<UserCreateWithoutCommentsInput, UserUncheckedCreateWithoutCommentsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCommentsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCommentsInput, UserUncheckedUpdateWithoutCommentsInput>
+  }
+
+  export type UserUpdateWithoutCommentsInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    projects?: ProjectMemberUpdateManyWithoutUserNestedInput
+    tasks?: TaskUpdateManyWithoutAssignedToNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCommentsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    projects?: ProjectMemberUncheckedUpdateManyWithoutUserNestedInput
+    tasks?: TaskUncheckedUpdateManyWithoutAssignedToNestedInput
   }
 
   export type CommentCreateManyUserInput = {
@@ -11581,58 +11687,21 @@ export namespace Prisma {
     role: string
   }
 
-  export type TaskUpdateWithoutAssignedToInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    priority?: NullableStringFieldUpdateOperationsInput | string | null
-    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: StringFieldUpdateOperationsInput | string
-    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
-    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    project?: ProjectUpdateOneWithoutTasksNestedInput
-    category?: CategoryUpdateOneWithoutTasksNestedInput
-    dependsOn?: TaskUpdateOneWithoutDependentTasksNestedInput
-    dependentTasks?: TaskUpdateManyWithoutDependsOnNestedInput
-    comments?: CommentUpdateManyWithoutTaskNestedInput
-  }
-
-  export type TaskUncheckedUpdateWithoutAssignedToInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    projectId?: NullableIntFieldUpdateOperationsInput | number | null
-    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
-    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    priority?: NullableStringFieldUpdateOperationsInput | string | null
-    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: StringFieldUpdateOperationsInput | string
-    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
-    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
-    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    dependentTasks?: TaskUncheckedUpdateManyWithoutDependsOnNestedInput
-    comments?: CommentUncheckedUpdateManyWithoutTaskNestedInput
-  }
-
-  export type TaskUncheckedUpdateManyWithoutAssignedToInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    projectId?: NullableIntFieldUpdateOperationsInput | number | null
-    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
-    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    priority?: NullableStringFieldUpdateOperationsInput | string | null
-    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: StringFieldUpdateOperationsInput | string
-    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
-    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
-    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type TaskCreateManyAssignedToInput = {
+    id?: number
+    title: string
+    description?: string | null
+    projectId?: number | null
+    categoryId?: number | null
+    dueDate?: Date | string | null
+    priority?: string | null
+    estimatedTime?: number | null
+    status?: string
+    attachmentPath?: string | null
+    recurrence?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    dependsOnId?: number | null
   }
 
   export type CommentUpdateWithoutUserInput = {
@@ -11672,6 +11741,67 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
   }
 
+  export type TaskUpdateWithoutAssignedToInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priority?: NullableStringFieldUpdateOperationsInput | string | null
+    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
+    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    comments?: CommentUpdateManyWithoutTaskNestedInput
+    category?: CategoryUpdateOneWithoutTasksNestedInput
+    dependsOn?: TaskUpdateOneWithoutDependentTasksNestedInput
+    dependentTasks?: TaskUpdateManyWithoutDependsOnNestedInput
+    project?: ProjectUpdateOneWithoutTasksNestedInput
+  }
+
+  export type TaskUncheckedUpdateWithoutAssignedToInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    projectId?: NullableIntFieldUpdateOperationsInput | number | null
+    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
+    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priority?: NullableStringFieldUpdateOperationsInput | string | null
+    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
+    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
+    comments?: CommentUncheckedUpdateManyWithoutTaskNestedInput
+    dependentTasks?: TaskUncheckedUpdateManyWithoutDependsOnNestedInput
+  }
+
+  export type TaskUncheckedUpdateManyWithoutAssignedToInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    projectId?: NullableIntFieldUpdateOperationsInput | number | null
+    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
+    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priority?: NullableStringFieldUpdateOperationsInput | string | null
+    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
+    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type CommentCreateManyTaskInput = {
+    id?: number
+    message: string
+    userId: number
+    createdAt?: Date | string
+  }
+
   export type TaskCreateManyDependsOnInput = {
     id?: number
     title: string
@@ -11684,70 +11814,9 @@ export namespace Prisma {
     status?: string
     attachmentPath?: string | null
     recurrence?: string | null
-    userId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
-  }
-
-  export type CommentCreateManyTaskInput = {
-    id?: number
-    message: string
-    userId: number
-    createdAt?: Date | string
-  }
-
-  export type TaskUpdateWithoutDependsOnInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    priority?: NullableStringFieldUpdateOperationsInput | string | null
-    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: StringFieldUpdateOperationsInput | string
-    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
-    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    project?: ProjectUpdateOneWithoutTasksNestedInput
-    category?: CategoryUpdateOneWithoutTasksNestedInput
-    dependentTasks?: TaskUpdateManyWithoutDependsOnNestedInput
-    assignedTo?: UserUpdateOneWithoutTasksNestedInput
-    comments?: CommentUpdateManyWithoutTaskNestedInput
-  }
-
-  export type TaskUncheckedUpdateWithoutDependsOnInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    projectId?: NullableIntFieldUpdateOperationsInput | number | null
-    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
-    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    priority?: NullableStringFieldUpdateOperationsInput | string | null
-    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: StringFieldUpdateOperationsInput | string
-    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
-    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    dependentTasks?: TaskUncheckedUpdateManyWithoutDependsOnNestedInput
-    comments?: CommentUncheckedUpdateManyWithoutTaskNestedInput
-  }
-
-  export type TaskUncheckedUpdateManyWithoutDependsOnInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    projectId?: NullableIntFieldUpdateOperationsInput | number | null
-    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
-    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    priority?: NullableStringFieldUpdateOperationsInput | string | null
-    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: StringFieldUpdateOperationsInput | string
-    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
-    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: number | null
   }
 
   export type CommentUpdateWithoutTaskInput = {
@@ -11770,6 +11839,60 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TaskUpdateWithoutDependsOnInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priority?: NullableStringFieldUpdateOperationsInput | string | null
+    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
+    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    comments?: CommentUpdateManyWithoutTaskNestedInput
+    category?: CategoryUpdateOneWithoutTasksNestedInput
+    dependentTasks?: TaskUpdateManyWithoutDependsOnNestedInput
+    project?: ProjectUpdateOneWithoutTasksNestedInput
+    assignedTo?: UserUpdateOneWithoutTasksNestedInput
+  }
+
+  export type TaskUncheckedUpdateWithoutDependsOnInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    projectId?: NullableIntFieldUpdateOperationsInput | number | null
+    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
+    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priority?: NullableStringFieldUpdateOperationsInput | string | null
+    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
+    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    comments?: CommentUncheckedUpdateManyWithoutTaskNestedInput
+    dependentTasks?: TaskUncheckedUpdateManyWithoutDependsOnNestedInput
+  }
+
+  export type TaskUncheckedUpdateManyWithoutDependsOnInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    projectId?: NullableIntFieldUpdateOperationsInput | number | null
+    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
+    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priority?: NullableStringFieldUpdateOperationsInput | string | null
+    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
+    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
   export type TaskCreateManyCategoryInput = {
     id?: number
     title: string
@@ -11781,10 +11904,10 @@ export namespace Prisma {
     status?: string
     attachmentPath?: string | null
     recurrence?: string | null
-    dependsOnId?: number | null
-    userId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    dependsOnId?: number | null
+    userId?: number | null
   }
 
   export type TaskUpdateWithoutCategoryInput = {
@@ -11798,11 +11921,11 @@ export namespace Prisma {
     recurrence?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    project?: ProjectUpdateOneWithoutTasksNestedInput
+    comments?: CommentUpdateManyWithoutTaskNestedInput
     dependsOn?: TaskUpdateOneWithoutDependentTasksNestedInput
     dependentTasks?: TaskUpdateManyWithoutDependsOnNestedInput
+    project?: ProjectUpdateOneWithoutTasksNestedInput
     assignedTo?: UserUpdateOneWithoutTasksNestedInput
-    comments?: CommentUpdateManyWithoutTaskNestedInput
   }
 
   export type TaskUncheckedUpdateWithoutCategoryInput = {
@@ -11816,12 +11939,12 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
     recurrence?: NullableStringFieldUpdateOperationsInput | string | null
-    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    dependentTasks?: TaskUncheckedUpdateManyWithoutDependsOnNestedInput
+    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
     comments?: CommentUncheckedUpdateManyWithoutTaskNestedInput
+    dependentTasks?: TaskUncheckedUpdateManyWithoutDependsOnNestedInput
   }
 
   export type TaskUncheckedUpdateManyWithoutCategoryInput = {
@@ -11835,10 +11958,16 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
     recurrence?: NullableStringFieldUpdateOperationsInput | string | null
-    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type ProjectMemberCreateManyProjectInput = {
+    id?: number
+    userId: number
+    role: string
   }
 
   export type TaskCreateManyProjectInput = {
@@ -11852,70 +11981,10 @@ export namespace Prisma {
     status?: string
     attachmentPath?: string | null
     recurrence?: string | null
-    dependsOnId?: number | null
-    userId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
-  }
-
-  export type ProjectMemberCreateManyProjectInput = {
-    id?: number
-    userId: number
-    role: string
-  }
-
-  export type TaskUpdateWithoutProjectInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    priority?: NullableStringFieldUpdateOperationsInput | string | null
-    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: StringFieldUpdateOperationsInput | string
-    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
-    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    category?: CategoryUpdateOneWithoutTasksNestedInput
-    dependsOn?: TaskUpdateOneWithoutDependentTasksNestedInput
-    dependentTasks?: TaskUpdateManyWithoutDependsOnNestedInput
-    assignedTo?: UserUpdateOneWithoutTasksNestedInput
-    comments?: CommentUpdateManyWithoutTaskNestedInput
-  }
-
-  export type TaskUncheckedUpdateWithoutProjectInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
-    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    priority?: NullableStringFieldUpdateOperationsInput | string | null
-    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: StringFieldUpdateOperationsInput | string
-    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
-    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
-    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    dependentTasks?: TaskUncheckedUpdateManyWithoutDependsOnNestedInput
-    comments?: CommentUncheckedUpdateManyWithoutTaskNestedInput
-  }
-
-  export type TaskUncheckedUpdateManyWithoutProjectInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
-    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    priority?: NullableStringFieldUpdateOperationsInput | string | null
-    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: StringFieldUpdateOperationsInput | string
-    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
-    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
-    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    dependsOnId?: number | null
+    userId?: number | null
   }
 
   export type ProjectMemberUpdateWithoutProjectInput = {
@@ -11933,6 +12002,60 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     role?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TaskUpdateWithoutProjectInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priority?: NullableStringFieldUpdateOperationsInput | string | null
+    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
+    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    comments?: CommentUpdateManyWithoutTaskNestedInput
+    category?: CategoryUpdateOneWithoutTasksNestedInput
+    dependsOn?: TaskUpdateOneWithoutDependentTasksNestedInput
+    dependentTasks?: TaskUpdateManyWithoutDependsOnNestedInput
+    assignedTo?: UserUpdateOneWithoutTasksNestedInput
+  }
+
+  export type TaskUncheckedUpdateWithoutProjectInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
+    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priority?: NullableStringFieldUpdateOperationsInput | string | null
+    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
+    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    comments?: CommentUncheckedUpdateManyWithoutTaskNestedInput
+    dependentTasks?: TaskUncheckedUpdateManyWithoutDependsOnNestedInput
+  }
+
+  export type TaskUncheckedUpdateManyWithoutProjectInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
+    dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priority?: NullableStringFieldUpdateOperationsInput | string | null
+    estimatedTime?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    attachmentPath?: NullableStringFieldUpdateOperationsInput | string | null
+    recurrence?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    dependsOnId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
 

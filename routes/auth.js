@@ -90,4 +90,77 @@ authRouter.post('/login', async (req, res) => {
   }
 });
 
+authRouter.put('/profile/avatar', async (req, res) => {
+  const { avatarUrl ,userId } = req.body;
+
+  if (!userId || !avatarUrl) {
+    return res.status(400).json({ message: 'Missing required fields.' });
+  }
+
+  try {
+    const updatedUser = await prisma.user.update({
+      where: { id: userId },
+      data: { avatar: avatarUrl }
+    });
+
+    res.status(200).json({ message: 'Avatar updated.', avatar: updatedUser.avatar });
+  } catch (error) {
+    console.error('Avatar update error:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+const crypto = require('crypto');
+
+authRouter.post('/forgot-password', async (req, res) => {
+  const { email } = req.body;
+
+  const user = await prisma.user.findUnique({ where: { email } });
+  if (!user) return res.status(404).json({ message: 'User not found.' });
+
+  const resetToken = crypto.randomBytes(32).toString('hex');
+  const expiry = new Date(Date.now() + 3600000); // 1 hour
+
+  await prisma.user.update({
+    where: { email },
+    data: {
+      resetToken,
+      resetTokenExpiry: expiry
+    }
+  });
+
+  console.log(`Reset link: http://yourfrontend.com/reset-password/${resetToken}`);
+
+  res.status(200).json({ message: 'Password reset link sent.' });
+});
+
+authRouter.post('/reset-password', async (req, res) => {
+  const { token, newPassword } = req.body;
+
+  const user = await prisma.user.findFirst({
+    where: {
+      resetToken: token,
+      resetTokenExpiry: { gte: new Date() }
+    }
+  });
+
+  if (!user) {
+    return res.status(400).json({ message: 'Invalid or expired token.' });
+  }
+
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+  await prisma.user.update({
+    where: { id: user.id },
+    data: {
+      password: hashedPassword,
+      resetToken: '',
+      resetTokenExpiry: null
+    }
+  });
+
+  res.status(200).json({ message: 'Password updated successfully.' });
+});
+
+
 module.exports = authRouter;

@@ -124,7 +124,10 @@ exports.Prisma.UserScalarFieldEnum = {
   firstName: 'firstName',
   lastName: 'lastName',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  avatar: 'avatar',
+  resetToken: 'resetToken',
+  resetTokenExpiry: 'resetTokenExpiry'
 };
 
 exports.Prisma.TaskScalarFieldEnum = {
@@ -139,10 +142,10 @@ exports.Prisma.TaskScalarFieldEnum = {
   status: 'status',
   attachmentPath: 'attachmentPath',
   recurrence: 'recurrence',
-  dependsOnId: 'dependsOnId',
-  userId: 'userId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  dependsOnId: 'dependsOnId',
+  userId: 'userId'
 };
 
 exports.Prisma.CategoryScalarFieldEnum = {
