@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
             dueDate,
             priority,
             estimatedTime,
-            status = 'not_started',
+            status ,
             attachmentPath,
             recurrence,
             dependsOnId,
