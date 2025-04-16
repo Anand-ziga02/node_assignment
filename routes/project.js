@@ -104,7 +104,7 @@ router.delete('/:id', async (req, res) => {
     await prisma.project.delete({
       where: { id: Number(id) },
     });
-    return res.status(204).send();
+    res.status(200).json({message:"Project Deleted"});
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Something went wrong while deleting the project' });

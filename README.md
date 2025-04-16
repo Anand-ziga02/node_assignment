@@ -45,7 +45,12 @@ PUT /api/tasks/:id
 DELETE /api/tasks/:id
 GET /api/tasks/:id/dependencies
 
-Project
+POST /api/tasks/:task_id/assign ( We can assign tasks to Users)
+{
+  "userId": 1
+}
+
+Project:
 
 POST /api/projects
 {

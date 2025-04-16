@@ -140,7 +140,7 @@ router.delete('/:id', async (req, res) => {
             where: { id }
         });
 
-        res.status(204).send();
+        res.status(200).json({message:"Task Deleted"});
     } catch (error) {
         console.error('Delete task error:', error);
         res.status(500).json({ message: 'Failed to delete task' });
@@ -204,5 +204,40 @@ router.post('/:id/comments', async (req, res) => {
     }
 });
 
+router.post('/:id/assign', async (req, res) => {
+    const taskId = parseInt(req.params.id);
+    const { userId } = req.body;
+  
+    try {
+      // 🔍 Check if user exists
+      const userExists = await prisma.user.findUnique({
+        where: { id: userId }
+      });
+  
+      if (!userExists) {
+        return res.status(404).json({ message: `User with ID ${userId} does not exist.` });
+      }
+  
+      // ✅ Proceed with assignment
+      const updatedTask = await prisma.task.update({
+        where: { id: taskId },
+        data: { userId }
+      });
+  
+      // 📢 Simulate notification
+      const notification = {
+        message: `Task #${taskId} has been assigned to user #${userId}`
+      };
+  
+      res.status(200).json({ task: updatedTask, notification });
+    } catch (error) {
+      console.error('Assign task error:', error);
+      res.status(500).json({ message: 'Failed to assign task' });
+    }
+  });
+  
+// router.post(':id/message',async(req,res)=>{
+
+// })
 
 module.exports = router
