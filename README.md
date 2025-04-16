@@ -1,81 +1,100 @@
-# node_assignment
-Backend Application
+# 🚀 Task Management API
 
-Signup:
+A **Task Management System** built with **Node.js (Express.js)**, providing full **user authentication**, **task**, **project**, and **category management**, using **JWT** for secure auth and **bcrypt** for password encryption.
 
-The encrypted password will be  
-"$2b$10$I23ohJYbE/DgUbYTQmGxA.lFD7jhR452mZzLVmfkCvFEQTamGOV1G"
+---
 
-POST /api/auth/signup
-payload :
-{
-  "email": "test@gmail.com",
-  "password": "12345678",
-  "firstName": "Test",
-  "lastName": "Test"
-}
+## 🛠️ Tech Stack
 
-POST /api/auth/login
-payload :
-{
-  "email": "test@gmail.com",
-  "password": "12345678"
-}
+- **Backend**: Node.js, Express.js
+- **Database**: PostgreSQL
+- **ORM**: Prisma
+- **Authentication**: JWT
+- **Encryption**: bcrypt
+- **Testing & API Client**: Postman
 
-POST /api/tasks
-{
-  "title": "Design Homepage",
-  "description": "Create Figma wireframes",
-  "projectId": 1,
-  "categoryId": 2,
-  "dueDate": "2025-05-01",
-  "priority": "high",
-  "estimatedTime": 8,
-  "status": "not_started",
-  "attachmentPath": "path/to/file",
-  "recurrence": "weekly",
-  "dependsOnId": 3,
-  "userId": 1
-}
-GET /api/tasks ( fetch all tasks)
-GET /api/tasks/:id ( fetch specify task details)
-Query Parameters (optional):
-status, priority, dueDate, categoryId, search, sortBy, order
-PUT /api/tasks/:id
-DELETE /api/tasks/:id
-GET /api/tasks/:id/dependencies
+---
 
-POST /api/tasks/:task_id/assign ( We can assign tasks to Users)
-{
-  "userId": 1
-}
+## 🔐 Authentication Features
 
-Project:
+- ✅ User Signup
+- ✅ User Login
+- ✅ Forgot Password
+- ✅ Password Reset
+- ✅ JWT-based session management
+- ✅ Password hashing using bcrypt
 
-POST /api/projects
-{
-  "name": "Project Name",
-  "description": "Optional description"
-}
-Get all Projects
-GET /api/projects
-Project by ID
-GET /api/projects/:id
-Update Project
-PUT /api/projects/:id
-DELETE /api/projects/:id
+---
 
-Category
+## 📁 API Endpoints Overview
 
-GET /api/categories
-GET /api/categories/:id
-POST /api/categories
-{
-  "name": "Development"
-}
-PUT /api/categories/:id
-{
-  "name": "New Category Name"
-}
-Delete Category
-DELETE /api/categories/:id
+### 👤 Authentication
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/signup` | Register a new user |
+| POST | `/api/auth/login` | Login user and get JWT token |
+| POST | `/api/auth/profile/avatar` | Upload Profile Avatar Pic |
+| POST | `/api/auth/forgot-password` | Send reset link/token (if implemented) |
+| POST | `/api/auth/reset-password/:token` | Reset user password |
+
+---
+
+### 📌 Projects
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/projects` | Create a new project |
+| GET | `/api/projects` | Get all projects |
+| GET | `/api/projects/:id` | Get a specific project |
+| PUT | `/api/projects/:id` | Update a project |
+| DELETE | `/api/projects/:id` | Delete a project |
+
+---
+
+### 🗂️ Categories
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/categories` | Create a new category |
+| GET | `/api/categories` | Get all categories |
+| GET | `/api/categories/:id` | Get a specific category |
+| PUT | `/api/categories/:id` | Update a category |
+| DELETE | `/api/categories/:id` | Delete a category |
+
+---
+
+### ✅ Tasks
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/tasks` | Create a task |
+| GET | `/api/tasks` | Get all tasks |
+| GET | `/api/tasks/:id` | Get a specific task |
+| PUT | `/api/tasks/:id` | Update task (title, description, status, etc.) |
+| DELETE | `/api/tasks/:id` | Delete a task |
+| GET | `/api/tasks/:id/dependencies` | Get task dependencies |
+| POST | `/api/tasks/:task_id/assign` | Assign a task to a user |
+| PUT | `/api/tasks/:id/status` | Update task status (e.g. completed) |
+| GET | `/api/tasks/status-summary` | Get a summary of task statuses |
+
+---
+
+## 🗃️ Database Setup (PostgreSQL + Prisma)
+
+This project uses **PostgreSQL** and **Prisma ORM**. You can easily connect and migrate your local database.
+
+### 🔧 Setup Instructions
+
+1. **Create `.env` file** in the root:
+   ```env
+   DATABASE_URL="postgresql://<username>:<password>@localhost:5432/<your_database>"
+2. **Install dependencies** : npm install
+3. **Run database migration** : npx prisma migrate dev --name init
+4. **Generate Prisma client** : npx prisma generate
+
+# 🚀 Run The Application
+npm run start
+
+📩 Postman Collection
+"https://elements.getpostman.com/redirect?entityId=21057670-eee1f121-5927-4701-9b84-fd09b497c507&entityType=collection"
